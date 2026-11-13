@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UNSEEN. — Private Luxury Concierge</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="UNSEEN.">
+<meta property="og:url" content="https://unseenconciergerie.com/">
+<meta property="og:title" content="UNSEEN. — Private Luxury Concierge">
+<meta property="og:description" content="UNSEEN. Private luxury concierge. Paris, Europe, Indian Ocean. Access to the places, events and experiences that stay closed to everyone else.">
+<meta property="og:image" content="https://unseenconciergerie.com/img/og-index.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="description" content="UNSEEN. Private luxury concierge. Paris, Europe, Indian Ocean. Access to the places, events and experiences that stay closed to everyone else.">
+<!-- Adresse de reference du site. Les autres noms de domaine (.fr, www)
+     continuent de fonctionner : cette ligne dit simplement a Google que
+     c'est cette adresse-ci qu'il doit retenir et afficher. -->
+<link rel="canonical" href="https://unseenconciergerie.com/">
+<!-- icone affichee si le site est ajoute a l'ecran d'accueil d'un iPhone -->
+<!-- La photo d'ouverture est la premiere chose que voit un visiteur :
+     on demande au navigateur de la charger en priorite, sans attendre
+     d'avoir lu toute la page. -->
+<link rel="preload" as="image" href="img/hero.avif" type="image/avif" fetchpriority="high">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "name":"UNSEEN.",
+  "description":"Conciergerie privée de luxe à Paris. Palaces, gastronomie étoilée, événements exclusifs, transport privé, personal shopping. Paris, Europe, océan Indien.",
+  "url":"https://unseenconciergerie.com",
+  "telephone":"+33613850733",
+  "email":"contact\u0040unseenconciergerie.com",
+  "address":{
+    "@type":"PostalAddress",
+    "postalCode":"77100",
+    "addressLocality":"Meaux",
+    "addressCountry":"FR"
+  },
+  "areaServed":["Paris","Europe","Indian Ocean"],
+  "sameAs":["https://instagram.com/unseen.conciergerie"]
+}
+</script>
+<link rel="stylesheet" href="fonts.css">
+<!-- Police pour les caracteres chinois (aucune des deux polices ci-dessus n'en dessine).
+     Chargee separement : le navigateur ne prend que les poids utilises. -->
+<style>
+/* Leaflet 1.9.4 — feuille de style officielle, integree ici (et non chargee
+   via <link>) pour que la carte reste stylee meme quand les feuilles de
+   style externes autres que Google Fonts sont bloquees (ex. apercu). */
+.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}
+</style>
+<style>
+/* =============================================================
+   UNSEEN. — SAISON ACTIVE
+   Pour changer de saison, ne modifiez QUE la ligne --accent.
+   Charte 3.2 : une seule couleur d'accent a la fois.
+
+   #D08A5C  Orange abricot   South of France / Summer
+   #A3161A  Rouge vif        Formula 1 Grand Prix
+   #1E4636  Vert sapin       Winter season / New Year's Eve
+   #A8823A  Or               Cannes Film Festival
+   #1F5E8A  Azur             French Riviera / Yachting
+   #7AA3BC  Bleu glacier     Ski season / Alps   [ACTIF]
+   #4B2236  Prune            Fashion Week
+   #CFC3AE  Sable            St Barth / Winter escape
+   ============================================================= */
+:root{
+  --accent:#7AA3BC;
+  --sur-accent:#000000;   /* texte posé sur la couleur d'accent : blanc si l'accent est foncé, #000000 s'il est clair */
+  --noir:#000000;
+  --blanc:#FFFFFF;
+  --bleu-clair:#F4EAE5;
+  --gris-doux:#E5D7D0;
+  --texte-2:#5C5556;
+  --texte-3:#6E6366;
+  --max:1240px;
+  --pad:40px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bleu-clair);
+  color:var(--noir);
+  font-family:'DM Sans','Noto Sans SC',system-ui,-apple-system,sans-serif;
+  font-weight:400;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:'League Spartan','Noto Sans SC',sans-serif;font-weight:700}
+/* Poids plus fort pour les caracteres chinois : 'Noto Sans SC' en 700 parait
+   plus fin que League Spartan au meme poids, on compense avec 900 (Black)
+   la ou le titre est en gras 800 en latin. */
+:lang(zh) h1,:lang(zh) h2,:lang(zh) h3,:lang(zh) .hero-mark{font-weight:900}
+/* Le resserrement des lettres (letter-spacing negatif) sert a compacter du
+   texte latin : applique a des sinogrammes, qui sont des blocs pleins, il
+   les fait se toucher. On annule ce resserrement uniquement quand la page
+   est en chinois. Le mot de marque "UNSEEN." reste en lettres latines
+   meme en version chinoise, donc .hero-mark et .mark n'ont pas besoin
+   d'etre corriges : ils ne contiennent jamais de sinogramme. */
+:lang(zh) h1,:lang(zh) h2,:lang(zh) h3,
+:lang(zh) .lede,:lang(zh) .hero-body p,:lang(zh) .card p,:lang(zh) .dest p,
+:lang(zh) .sitem p,:lang(zh) .tl-step p{letter-spacing:0}
+/* Les blocs de texte courant respirent davantage en chinois : les
+   caracteres pleins ont besoin de plus de place entre les lignes que
+   des lettres latines pour rester confortables a lire. */
+:lang(zh) .lede,:lang(zh) .hero-body p,:lang(zh) .card p,:lang(zh) .dest p,
+:lang(zh) .sitem p,:lang(zh) .tl-step p,:lang(zh) .mc-item p{line-height:1.9}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.num{font-family:'DM Sans',sans-serif;font-variant-numeric:tabular-nums}
+.rule-accent{height:2px;width:44px;background:var(--accent);border:0}
+
+/* ---------- barre haute ---------- */
+.topbar{position:sticky;top:0;z-index:60;background:var(--bleu-clair);border-bottom:1px solid rgba(0,0,0,.09)}
+.topbar-in{max-width:var(--max);margin:0 auto;padding:16px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.mark{font-family:'League Spartan',sans-serif;font-weight:800;font-size:21px;letter-spacing:-.01em;line-height:1;text-decoration:none;color:var(--noir)}
+.nav{display:flex;align-items:center;gap:26px}
+.nav a{font-size:13px;letter-spacing:.11em;text-transform:uppercase;text-decoration:none;color:var(--noir);font-weight:500;padding:5px 0;border-bottom:1px solid transparent}
+.nav a:hover,.nav a:focus-visible{border-bottom-color:var(--accent);color:var(--accent)}
+.langsw{display:flex;align-items:center;gap:7px;font-size:13px;letter-spacing:.08em;font-weight:600}
+.langsw button{background:none;border:0;cursor:pointer;font:inherit;color:var(--texte-3);padding:5px 2px}
+.langsw button[aria-pressed="true"]{color:var(--accent)}
+.langsw .sep{color:var(--gris-doux)}
+
+/* ---------- ancres sous la barre collante ---------- */
+section[id],div[id]{scroll-margin-top:88px}
+
+/* ---------- bouton et panneau de navigation mobile ---------- */
+.navtoggle{display:none;background:none;border:0;cursor:pointer;padding:8px 0 8px 14px;line-height:0}
+.navtoggle span{display:block;width:24px;height:2px;background:var(--noir);margin:5px 0;transition:transform .22s ease,opacity .18s ease}
+.navtoggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.navtoggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.navtoggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.navpanel{
+  position:fixed;inset:0;z-index:55;background:var(--bleu-clair);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:96px var(--pad) 48px;
+  opacity:0;visibility:hidden;transform:translateY(-10px);
+  transition:opacity .24s ease,transform .24s ease,visibility .24s
+}
+.navpanel.on{opacity:1;visibility:visible;transform:none}
+.navpanel nav{display:flex;flex-direction:column;gap:4px}
+.navpanel nav a{
+  font-size:24px;font-weight:800;letter-spacing:-.015em;text-decoration:none;color:var(--noir);
+  padding:12px 0;border-bottom:1px solid rgba(0,0,0,.10)
+}
+.navpanel nav a:active,.navpanel nav a:focus-visible{color:var(--accent)}
+.navpanel .pfoot{margin-top:38px;display:flex;flex-direction:column;gap:12px}
+.navpanel .pfoot a{
+  font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  text-decoration:none;color:var(--noir);border-bottom:1px solid var(--accent);
+  padding-bottom:5px;align-self:flex-start
+}
+
+@media(max-width:900px){
+  .topbar-in{padding:14px var(--pad)}
+  .nav{display:none}
+  .navtoggle{display:block;order:3}
+  .langsw{margin-left:auto}
+  section[id],div[id]{scroll-margin-top:68px}
+}
+@media(min-width:901px){
+  .navpanel{display:none}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--noir);color:var(--blanc);overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.64) 50%,rgba(0,0,0,.26) 100%)}
+.hero-in{position:relative;max-width:var(--max);margin:0 auto;padding:130px var(--pad) 106px;text-align:left}
+.hero-mark{font-family:'League Spartan',sans-serif;font-weight:800;font-size:clamp(58px,10.5vw,132px);line-height:.9;letter-spacing:-.02em}
+.hero-desc{margin-top:16px;font-size:14px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;color:#C9C9C9}
+.hero-body{margin-top:52px;max-width:660px}
+.hero-body h1{font-weight:800;font-size:clamp(30px,4.6vw,52px);line-height:1.04;letter-spacing:-.02em}
+.hero-body p{margin-top:22px;font-weight:300;font-size:20px;line-height:1.55;color:#D5D5D5}
+.places{margin-top:44px;display:flex;flex-wrap:wrap;align-items:center;gap:22px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+.places i{display:inline-block;width:1px;height:13px;background:var(--accent);font-style:normal}
+.cta-row{margin-top:44px;display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-block;padding:17px 34px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;text-decoration:none;border:1px solid currentColor;color:var(--blanc);transition:background .18s,color .18s,border-color .18s}
+.btn:hover,.btn:focus-visible{background:var(--blanc);color:var(--noir)}
+.btn-accent{background:var(--accent);border-color:var(--accent);color:var(--sur-accent)}
+.btn-accent:hover,.btn-accent:focus-visible{background:var(--blanc);border-color:var(--blanc);color:var(--noir)}
+@media(max-width:600px){.hero-in{padding:82px var(--pad) 74px}.hero .veil{background:linear-gradient(180deg,rgba(0,0,0,.70) 0%,rgba(0,0,0,.86) 100%)}}
+
+/* ---------- sections ---------- */
+section{padding:96px 0}
+.sec-white{background:var(--blanc)}
+.sec-pale{background:var(--bleu-clair)}
+.sec-dark{background:var(--noir);color:var(--blanc)}
+.head{max-width:720px}
+.eyebrow{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
+.eyebrow .n{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--accent);font-weight:500}
+.eyebrow .t{font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+h2{font-weight:800;font-size:clamp(30px,4.2vw,46px);line-height:1.05;letter-spacing:-.02em;margin-bottom:20px}
+.lede{font-weight:300;font-size:20px;line-height:1.55;color:var(--texte-2)}
+.sec-dark .lede{color:#C2C2C2}
+
+/* ---------- cartes ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(258px,100%),1fr));gap:28px;margin-top:56px}
+.card{background:var(--blanc);display:flex;flex-direction:column}
+.sec-dark .card{background:#0C0C0C}
+.card .ph{aspect-ratio:4/5;overflow:hidden;background:var(--gris-doux)}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.card:hover .ph img{transform:scale(1.04)}
+.card .txt{padding:22px 22px 26px}
+.card .tag{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
+.card h3{font-weight:700;font-size:19px;letter-spacing:-.01em;margin-bottom:10px}
+.card p{font-size:16px;line-height:1.62;color:var(--texte-2)}
+.sec-dark .card p{color:#ADADAD}
+
+/* ---------- destinations ---------- */
+.dests{margin-top:56px;display:flex;flex-direction:column;gap:2px}
+.dest{display:grid;grid-template-columns:1.05fr 1fr;background:var(--blanc);min-height:340px}
+.dest.flip .ph{order:2}
+.dest .ph{overflow:hidden;background:var(--gris-doux)}
+.dest .ph img{width:100%;height:100%;object-fit:cover;min-height:340px}
+.dest .txt{padding:46px 48px;display:flex;flex-direction:column;justify-content:center}
+.dest .tag{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:12px}
+.dest h3{font-weight:800;font-size:29px;letter-spacing:-.015em;margin-bottom:14px}
+.dest p{font-size:16.5px;line-height:1.65;color:var(--texte-2)}
+.dest .list{margin-top:20px;font-size:13.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--texte-3);line-height:2;font-weight:500}
+@media(max-width:880px){.dest{grid-template-columns:1fr}.dest.flip .ph{order:0}.dest .ph img{min-height:240px}.dest .txt{padding:34px 28px 40px}}
+
+
+
+/* ---------- contact ---------- */
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:52px}
+.ci .lbl{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:9px}
+.ci a{font-size:16.5px;text-decoration:none;color:inherit;white-space:nowrap;border-bottom:1px solid rgba(255,255,255,.22);padding-bottom:3px}
+.ci a:hover,.ci a:focus-visible{color:var(--accent);border-bottom-color:var(--accent)}
+@media(max-width:900px){.cgrid{grid-template-columns:repeat(2,1fr);gap:26px 30px}}
+
+
+/* ---------- carte interactive (Leaflet) ---------- */
+.partner-list{margin-top:16px;display:flex;flex-direction:column}
+.partner-item{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.10);cursor:pointer}
+.partner-item .pn{font-size:15.5px;color:var(--blanc);line-height:1.35;transition:color .15s;flex:1 1 auto}
+.partner-item:hover .pn{color:var(--accent)}
+.partner-item .pt{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#A0A0A0;white-space:nowrap;flex:0 0 auto}
+
+/* ---------- methode : frise horizontale ---------- */
+.timeline{list-style:none;margin:58px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.timeline::before{content:"";position:absolute;top:13px;left:0;right:0;height:1px;background:rgba(0,0,0,.13)}
+.tl-step{position:relative;padding-right:30px}
+.tl-k{position:relative;display:flex;align-items:center;justify-content:center;width:27px;height:27px;border-radius:50%;background:var(--blanc);border:1px solid var(--accent);color:var(--accent);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;z-index:1}
+.tl-step h3{font-weight:700;font-size:18px;margin:22px 0 9px}
+.tl-step p{font-size:15.5px;line-height:1.6;color:var(--texte-2)}
+@media(max-width:860px){
+  .timeline{grid-template-columns:1fr;gap:28px;margin-top:38px}
+  .timeline::before{top:0;bottom:0;left:13px;right:auto;width:1px;height:auto}
+  .tl-step{padding:0 0 0 46px}
+  .tl-k{position:absolute;left:0;top:0}
+  .tl-step h3{margin-top:1px}
+}
+
+/* ---------- saisons : bande editoriale ---------- */
+.srow{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px}
+.sitem .sph{aspect-ratio:16/9;overflow:hidden;background:#111;margin-bottom:24px}
+.sitem .sph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.sitem:hover .sph img{transform:scale(1.04)}
+.sitem .rule-accent{margin-bottom:18px}
+.sitem .tag{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
+.sitem h3{font-weight:800;font-size:22px;letter-spacing:-.015em;margin-bottom:10px}
+.sitem p{font-size:15.5px;line-height:1.62;color:var(--texte-2)}
+@media(max-width:860px){.srow{grid-template-columns:1fr;gap:34px;margin-top:36px}}
+
+/* ---------- partenaires : bandeau sous la carte ---------- */
+.map-cta{margin-top:56px;padding-top:42px;border-top:1px solid rgba(255,255,255,.14)}
+@media(max-width:760px){.mc-grid{grid-template-columns:1fr;gap:32px}.mc-intro{font-size:16.5px}}
+
+/* ---------- pied de page ---------- */
+footer{background:var(--noir);color:var(--blanc);padding:72px 0 46px;border-top:1px solid rgba(255,255,255,.14)}
+.foot-mark{font-family:'League Spartan',sans-serif;font-weight:800;font-size:38px;line-height:1}
+.curated{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#A0A0A0;margin-top:10px}
+.foot-sep{height:1px;background:#FFFFFF;opacity:.16;border:0;margin-top:34px}
+.foot-legal{margin-top:34px;font-size:13.5px;line-height:2;color:#A0A0A0}
+.foot-legal a{color:#D6D6D6}
+.foot-legal a:hover,.foot-legal a:focus-visible{color:var(--accent)}
+.foot-legal .num,.foot-legal strong{color:#D6D6D6;font-weight:600}
+
+/* ---------- bande editoriale pleine largeur ---------- */
+.band{position:relative;background:var(--noir);overflow:hidden;min-height:clamp(360px,52vh,540px);display:flex;align-items:flex-end}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+.band .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.12) 30%,rgba(0,0,0,.80) 100%)}
+.band .in{position:relative;max-width:var(--max);margin:0 auto;width:100%;padding:0 var(--pad) 58px;color:var(--blanc)}
+.band .wl{height:1px;width:78px;background:var(--accent);border:0;margin-bottom:22px}
+.band p{font-weight:300;font-size:clamp(22px,3.1vw,34px);line-height:1.24;letter-spacing:-.01em;max-width:660px}
+.band .sig{margin-top:20px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#B4B4B4;font-weight:500}
+
+/* les images sont servies en AVIF avec repli WebP */
+picture{display:block;width:100%;height:100%}
+
+/* ---------- mosaique ---------- */
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--noir)}
+.mosaic figure{margin:0;aspect-ratio:4/5;overflow:hidden;background:#111}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,opacity .4s ease;opacity:.92}
+.mosaic figure:hover img{transform:scale(1.05);opacity:1}
+@media(max-width:900px){.mosaic{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- carte interactive ---------- */
+.mapsec{background:var(--noir);color:var(--blanc)}
+@media(max-width:880px){.mapgrid{grid-template-columns:1fr;gap:30px}}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media(max-width:760px){
+  /* cartes : visuel large et court plutôt que portrait, pour raccourcir la page */
+  .card .ph{aspect-ratio:16/10}
+  .card .txt{padding:20px 20px 24px}
+  .dest .ph img{min-height:190px}
+  .dest .txt{padding:30px 26px 34px}
+  .band{min-height:clamp(280px,40vh,380px)}
+}
+@media(max-width:560px){
+  :root{--pad:24px}
+  body{font-size:16.5px}
+  section{padding:58px 0}
+  h2{font-size:clamp(27px,7vw,34px)}
+  .hero-in{padding:66px var(--pad) 58px}
+  .hero-body{margin-top:32px}
+  .hero-body p{font-size:17.5px}
+  .lede{font-size:17.5px}
+  .cards{gap:18px;margin-top:34px}
+  .card .ph{aspect-ratio:16/9}
+  .card h3{font-size:18px}
+  .card p{font-size:15.5px}
+  .dests{margin-top:34px}
+  .dest .ph img{min-height:170px}
+  .dest h3{font-size:25px}
+  .dest p{font-size:15.5px}
+  .cgrid{gap:24px;margin-top:38px;grid-template-columns:1fr}
+  .ci a{font-size:15px}
+  .btn{padding:16px 26px;width:100%;text-align:center}
+  .places{gap:14px;font-size:11.5px}
+  .band .in{padding-bottom:38px}
+  .band p{font-size:clamp(20px,5.6vw,26px)}
+  .mosaic figure{aspect-ratio:1/1}
+  footer{padding:52px 0 38px}
+  .foot-mark{font-size:32px}
+  .enq-head{margin-top:44px;padding-top:34px}
+  .fld{margin-bottom:22px}
+  .enq-actions{gap:18px}
+  .enq-actions .enq-alt{width:100%;text-align:center}
+}
+
+/* ---------- formulaire de demande ---------- */
+.enq-head{margin-top:66px;padding-top:46px;border-top:1px solid rgba(255,255,255,.16)}
+.enq-head .tag{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:12px}
+.enq-head h3{font-weight:800;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.015em;margin-bottom:14px}
+.enq-head p{font-size:16.5px;line-height:1.65;color:#B4B4B4;max-width:640px}
+form.enq{margin-top:40px;max-width:840px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media(max-width:700px){.frow{grid-template-columns:1fr;gap:0}}
+.fld{margin-bottom:26px}
+.fld label{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#D6D6D6;margin-bottom:10px}
+.fld label em{font-style:normal;color:#A0A0A0;font-weight:500;letter-spacing:.1em}
+.fld input,.fld select,.fld textarea{
+  width:100%;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.26);
+  color:var(--blanc);font-family:'DM Sans',system-ui,sans-serif;font-size:16.5px;
+  padding:13px 0;outline:none;border-radius:0;transition:border-color .18s ease;
+  -webkit-appearance:none;appearance:none
+}
+.fld select{
+  cursor:pointer;padding-right:30px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path fill='%23B4B4B4' d='M1 1l5 5 5-5'/></svg>");
+  background-repeat:no-repeat;background-position:right 2px center;background-size:11px
+}
+.fld select option,.fld select optgroup{background:#0B0B0B;color:var(--blanc)}
+.fld textarea{min-height:112px;resize:vertical;line-height:1.6}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-bottom-color:var(--accent)}
+.fld input::placeholder,.fld textarea::placeholder{color:#9A9A9A}
+.fld.bad input,.fld.bad select,.fld.bad textarea{border-bottom-color:#E0705F}
+.fld .msg{display:none;margin-top:8px;font-size:13px;color:#E0705F;letter-spacing:.01em}
+.fld.bad .msg{display:block}
+.agree{display:flex;gap:13px;align-items:flex-start;margin:2px 0 8px}
+.agree input{width:17px;height:17px;flex:0 0 17px;margin-top:4px;accent-color:var(--accent);cursor:pointer;border-radius:0}
+.agree span{font-size:14.5px;line-height:1.62;color:#9A9A9A}
+.agree a{color:#D6D6D6;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px}
+.agree a:hover{color:var(--accent)}
+.agree-msg{display:none;font-size:13px;color:#E0705F;margin:0 0 20px 30px}
+.agree-msg.on{display:block}
+.enq-actions{display:flex;flex-wrap:wrap;gap:22px;align-items:center;margin-top:26px}
+button.btn{background:transparent;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif}
+.enq-alt{font-size:14.5px;color:#A0A0A0}
+.enq-alt a{color:#D6D6D6;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;cursor:pointer}
+.enq-alt a:hover{color:var(--accent)}
+.enq-note{margin-top:30px;font-size:13.5px;line-height:1.8;color:#A0A0A0;max-width:640px}
+.enq-done{display:none;margin-top:40px;border:1px solid rgba(255,255,255,.2);padding:40px 36px;max-width:640px}
+.enq-done h3{font-weight:800;font-size:26px;color:var(--accent);margin-bottom:12px;letter-spacing:-.015em}
+.enq-done p{font-size:16.5px;color:#B4B4B4;line-height:1.65}
+@media(max-width:560px){
+  .enq-head{margin-top:52px;padding-top:38px}
+  .enq-actions{gap:16px}
+  .enq-actions .btn{width:100%}
+}
+
+/* formulaire compact : le nom du champ est dans la case, il monte en petit quand on écrit */
+form.enq .fld{position:relative;margin-bottom:14px}
+form.enq .fld label{position:absolute;left:0;top:19px;margin:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;pointer-events:none;font-size:16px;letter-spacing:0;text-transform:none;font-weight:400;color:#A8A8A8;transition:top .15s,font-size .15s,color .15s}
+form.enq .fld label em{color:#8E8E8E;letter-spacing:0;font-weight:400}
+form.enq .fld input,form.enq .fld textarea{padding:25px 0 8px}
+form.enq .fld textarea{min-height:92px;line-height:1.5}
+form.enq .fld:focus-within label,form.enq .fld.has label{top:4px;font-size:11.5px;letter-spacing:.06em;color:var(--accent)}
+form.enq .fld.sel label{position:static;display:block;font-size:11.5px;letter-spacing:.06em;color:#A8A8A8;margin:0 0 -4px;pointer-events:auto}
+form.enq .fld.sel select{padding:10px 30px 8px 0}
+form.enq .fld .msg{margin-top:4px}
+form.enq .frow{gap:0 26px}
+.more{margin:2px 0 14px}
+.more summary{list-style:none;cursor:pointer;font-size:14.5px;color:#D6D6D6;padding:8px 0;display:inline-block;border-bottom:1px solid var(--accent)}
+.more summary::-webkit-details-marker{display:none}
+.more summary:before{content:"+\00a0\00a0";color:var(--accent);font-weight:600}
+.more[open] summary:before{content:"\2212\00a0\00a0"}
+.more summary em{font-style:normal;color:#8E8E8E}
+.more[open] summary{margin-bottom:10px}
+.agree{margin:6px 0 6px}
+.agree span{font-size:13.5px;line-height:1.55}
+.enq-note{margin-top:20px;font-size:12.5px;line-height:1.7}
+.enq-head p{font-size:16px;line-height:1.55}
+@media(max-width:560px){.enq-head{margin-top:40px;padding-top:30px}.enq-head h3{margin-bottom:8px}form.enq{margin-top:26px}.enq-actions{margin-top:18px}}
+</style>
+
+<link rel="stylesheet" href="anim.css">
+<style>.srow.four{grid-template-columns:repeat(4,1fr)}@media(max-width:860px){.srow.four{grid-template-columns:1fr 1fr}}.plogos{display:flex;flex-wrap:wrap;gap:44px;align-items:center;margin-top:44px}.plogos img{height:44px;width:auto}.plogos .ph2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--texte-3);border:1px dashed var(--gris-doux);padding:14px 20px}</style><style>#services .cards{grid-template-columns:repeat(4,1fr)}@media(max-width:860px){#services .cards{grid-template-columns:1fr 1fr}}</style><link rel="stylesheet" href="season.css">
+<style>
+/* --- Version 2 : Lin et prune --- */
+.hero,.sec-dark,footer{background:#2B2A2E}
+.hero{background:#000}
+.topbar{background:rgba(255,255,255,.95);backdrop-filter:blur(8px)}
+.hero .veil{background:linear-gradient(90deg,rgba(28,27,30,.72) 0%,rgba(28,27,30,.38) 55%,rgba(28,27,30,.12) 100%)!important}
+.eyebrow .n{color:var(--accent)}
+.nv-link{color:inherit;text-decoration:none;border-bottom:2px solid var(--accent)}
+/* services */
+.nv-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:72px;margin-top:56px;align-items:start}
+.nv-list{list-style:none}
+.nv-list li{border-top:1px solid rgba(255,255,255,.14);padding:20px 0;display:grid;grid-template-columns:110px 1fr;gap:18px;cursor:pointer}
+.nv-list li:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+.nv-list .t{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E9C4B8;padding-top:9px}
+.nv-list h3{font-size:clamp(22px,2.6vw,30px);line-height:1.1;transition:color .3s}
+.nv-list p{font-size:15px;line-height:1.6;color:#C9C3C5;max-height:0;overflow:hidden;opacity:0;transition:max-height .45s,opacity .45s,margin .45s}
+.nv-list li.on h3{color:#E9C4B8}
+.nv-list li.on p{max-height:140px;opacity:1;margin-top:8px}
+.nv-img{position:sticky;top:110px;aspect-ratio:4/5;overflow:hidden;background:#1E1D20}
+.nv-img picture{position:absolute;inset:0}.nv-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+.nv-img img.on{opacity:1}
+/* destinations */
+.nv-dest{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;margin-top:56px}
+.nd{position:relative;overflow:hidden;color:#FFFFFF;text-decoration:none;min-height:400px;display:flex;align-items:flex-end}
+.nd img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s}
+.nd:hover img{transform:scale(1.05)}
+.nd:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(28,27,30,.82))}
+.nd .in{position:relative;z-index:2;padding:26px}
+.nd .in span{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#E9C4B8}
+.nd .in h3{font-size:clamp(30px,3.4vw,42px);line-height:1;margin-top:6px}
+.nd .in p{font-size:15px;color:#EEE6E2;max-width:360px;margin-top:6px}
+.nd1{grid-column:span 7;min-height:520px}.nd2{grid-column:span 5;min-height:520px}.nd3{grid-column:span 5}.nd4{grid-column:span 7}
+/* carte */
+.nv-world{margin-top:44px}.nv-mapgrid{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;margin-top:44px;align-items:center}.nv-eu{border:1px solid rgba(255,255,255,.12);padding:14px}.nv-eu-t{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#C9C3C5;margin-bottom:6px}#europe{width:100%;height:auto;display:block}
+#world{width:100%;height:auto;display:block}
+svg .land{fill:#3A393E;stroke:#56545A;stroke-width:.5}
+svg .land.eu{fill:#47454B}
+svg .arc{fill:none;stroke-width:1.2}
+svg .arc.in{stroke:#C9C3C5;stroke-dasharray:3 5;opacity:.55}
+svg .arc.out{stroke:#E9C4B8;opacity:.9}
+svg .arc.hi{opacity:1;stroke-width:2.2}
+svg .pt{cursor:pointer}
+svg .pt circle{transition:r .2s}
+svg .pt text{fill:#EEE6E2;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+svg .pt.base text{fill:#E9C4B8;font-size:13px;font-weight:600}
+.nv-key{display:flex;gap:26px;flex-wrap:wrap;margin-top:14px;font-size:13px;color:#C9C3C5}
+.nv-key i{display:inline-block;width:26px;height:0;border-top:2px dashed #C9C3C5;margin-right:8px;vertical-align:middle}
+.nv-key i.out{border-top:2px solid #E9C4B8}
+.nv-info{border-top:1px solid rgba(255,255,255,.16);padding-top:22px;min-height:180px}
+.nv-info .t{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E9C4B8}
+.nv-info h3{font-size:34px;margin-top:6px}
+.nv-info p{margin-top:10px;color:#C9C3C5;font-size:15.5px;line-height:1.6}
+/* en ce moment */
+.nv-now{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:48px}
+.nn{display:grid;grid-template-columns:1fr 1.1fr;background:var(--blanc);text-decoration:none;color:inherit;min-height:300px}
+.nn img{width:100%;height:100%;object-fit:cover}
+.nn div{padding:28px}
+.nn span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.nn h3{font-size:28px;margin-top:8px}
+.nn p{margin-top:10px;font-size:15px;color:var(--texte-2);line-height:1.6}
+.nn b{display:inline-block;margin-top:16px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:4px}
+/* photos emballées (avif + webp) : le cadre prend toute la tuile */
+.nd picture{position:absolute;inset:0}
+.nn picture{display:block;height:100%;min-height:220px}
+
+/* Téléphone : tout est visible tout de suite (l'apparition douce laissait des blocs vides sur iPhone) */
+@media(max-width:900px){.rv,.reveal{opacity:1!important;transform:none!important;transition:none!important}}
+@media(max-width:860px){.nv-dest{scroll-padding-left:var(--pad)}}
+
+/* Téléphone : les services défilent de gauche à droite, en cartes */
+.svc-ph{display:none}
+@media(max-width:860px){
+  .nv-list{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:32px calc(var(--pad) * -1) 0;padding:0 var(--pad) 8px;scroll-padding-left:var(--pad);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .nv-list::-webkit-scrollbar{display:none}
+  .nv-list li,.nv-list li:last-child{flex:0 0 80%;scroll-snap-align:start;display:block;border:0;border-top:2px solid var(--accent);background:rgba(255,255,255,.05);padding:20px 18px 22px!important}
+  .nv-list li h3{color:#fff!important;margin-top:6px}
+  .nv-list p{max-height:none!important;opacity:1!important;margin-top:10px!important}
+  .nv-list .svc-ph{display:block;width:auto;height:auto;aspect-ratio:16/10;overflow:hidden;margin:-20px -18px 16px;background:#1E1D20}
+  .nv-list .svc-ph img{width:100%;height:100%;object-fit:cover;display:block}
+}
+/* partenaires : bandeau qui défile sans s'arrêter */
+.marquee{pointer-events:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;overflow:hidden;margin-top:40px;border-top:1px solid var(--gris-doux);border-bottom:1px solid var(--gris-doux);padding:38px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;align-items:center;gap:80px;width:max-content;animation:defile 36s linear infinite;will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.track img{width:auto;flex:none}
+@keyframes defile{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@media(max-width:860px){.marquee{padding:28px 0}.track{gap:52px;animation-duration:17s}.track img{transform:scale(.8)}}
+/* « Réduire les animations » : pas de défilement, une seule série de logos (les copies de la boucle sont masquées), côte à côte et centrés */
+@media(prefers-reduced-motion:reduce){.marquee{-webkit-mask-image:none;mask-image:none}.track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;gap:28px 40px;padding:0 20px}.track img[aria-hidden="true"]{display:none}.track img{max-width:42%;object-fit:contain}}
+/* partenaires */
+.nv-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:36px;margin-top:44px;padding:40px 0;border-top:1px solid var(--gris-doux);border-bottom:1px solid var(--gris-doux)}
+.nv-logos img{height:40px;width:auto}
+/* téléphone : comme une application */
+@media(max-width:860px){
+  .nv-grid{grid-template-columns:1fr;gap:0}
+  .nv-img{display:none}
+  .nv-list li{grid-template-columns:1fr;gap:4px;padding:18px 0}
+  .nv-list .t{padding-top:0}
+  .nv-list p{max-height:none;opacity:1;margin-top:6px}
+  .nv-dest{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:40px calc(var(--pad) * -1) 0;padding:0 var(--pad) 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nv-dest::-webkit-scrollbar{display:none}
+  .nd{flex:0 0 82%;min-height:440px!important;scroll-snap-align:start}
+  .nv-mapgrid{grid-template-columns:1fr;gap:20px}
+  .nv-now{grid-template-columns:1fr}
+  .nn{grid-template-columns:1fr}.nn img{aspect-ratio:16/10}
+  .nv-logos{justify-content:center;gap:28px 40px}
+  .nv-logos img{height:32px}
+}
+
+/* bouton WhatsApp fixe sur téléphone (comme sur Paris, Riviera, Océan Indien, Professionnels) */
+.wa{display:none}
+@media(max-width:900px){
+  .wa{display:flex;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:40;width:50px;height:50px;border-radius:50%;background:var(--accent);color:var(--sur-accent);align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.22);text-decoration:none;transition:opacity .25s}
+  .wa svg{width:24px;height:24px}
+  .wa.wa-cache{opacity:0;pointer-events:none}
+}
+
+.navpanel nav .pro-q{margin-top:30px;font-size:13px;color:#6E6E6E}
+.navpanel nav a.pro{font-size:17px;font-weight:600;letter-spacing:0;border-bottom:0;padding:6px 0 0}
+.navpanel nav a.pro:after{content:" \2192"}
+
+/* menu ordinateur : « Professionnels » à droite, juste avant les langues, séparé des liens clients */
+.langsw a.pro,.lang a.pro{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#000;font-weight:500;opacity:.7;margin-right:12px;padding-right:20px;border-right:1px solid rgba(0,0,0,.22);white-space:nowrap}
+.langsw a.pro:hover,.lang a.pro:hover,.langsw a.pro.on,.lang a.pro.on{opacity:1}
+@media(max-width:900px){.langsw a.pro,.lang a.pro{display:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="mark" href="#top">UNSEEN.</a>
+    <nav class="nav">
+      <a href="#services" data-en="Services" data-fr="Services" data-zh="服务">Services</a>
+      <a href="#destinations" data-en="Destinations" data-fr="Destinations" data-zh="目的地">Destinations</a>
+      <a href="#now" data-en="Seasons" data-fr="Saisons" data-zh="当季">Seasons</a>
+      
+      <a href="#contact" data-en="Contact" data-fr="Contact" data-zh="联系我们">Contact</a>
+    </nav>
+    <div class="langsw">
+      <a href="professionals.html" class="pro" data-en="Professionals" data-fr="Professionnels" data-zh="专业合作">Professionals</a>
+      <button type="button" id="btn-en" aria-pressed="true">EN</button>
+      <span class="sep">/</span>
+      <button type="button" id="btn-fr" aria-pressed="false">FR</button>
+      <span class="sep">/</span>
+      <button type="button" id="btn-zh" aria-pressed="false" lang="zh">中文</button>
+    </div>
+    <button class="navtoggle" id="navtoggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navpanel">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<div class="navpanel" id="navpanel" aria-hidden="true">
+  <nav>
+      <a href="#services" data-en="Services" data-fr="Services" data-zh="服务">Services</a>
+      <a href="#destinations" data-en="Destinations" data-fr="Destinations" data-zh="目的地">Destinations</a>
+      <a href="#now" data-en="Seasons" data-fr="Saisons" data-zh="当季">Seasons</a>
+      
+      <a href="#contact" data-en="Contact" data-fr="Contact" data-zh="联系我们">Contact</a>
+      <span class="pro-q" data-en="Travel professional?" data-fr="Vous êtes professionnel du voyage ?" data-zh="您是旅游业专业人士？">Travel professional?</span>
+      <a href="professionals.html" class="pro" data-en="Professionals" data-fr="Professionnels" data-zh="专业合作">Professionals</a>
+    </nav>
+  <div class="pfoot">
+    <a href="https://wa.me/33613850733">WhatsApp</a>
+    <a href="#" data-u="contact" data-d="unseenconciergerie.com">contact&#64;unseenconciergerie.com</a>
+  </div>
+</div>
+
+<div id="top" class="hero">
+  <!-- Le cadre de l'image de fond est ecrit ici, et non cree par anim.js :
+       si le script n'arrive pas, la photo doit rester DERRIERE le texte. -->
+  <div class="hero-bg" aria-hidden="true">
+    <picture class="hslide is-on"><source type="image/avif" srcset="img/hero.avif"><img class="bg" src="img/hero.webp" alt="The Eiffel Tower at dusk, seen from a Paris avenue" data-alt-en="The Eiffel Tower at dusk, seen from a Paris avenue" data-alt-fr="La tour Eiffel au crépuscule, vue depuis une avenue de Paris" data-alt-zh="黄昏时分，从巴黎街道远眺埃菲尔铁塔" fetchpriority="high"></picture>
+  </div>
+  <div class="veil"></div>
+  <div class="hero-in">
+    <div class="hero-mark">UNSEEN.</div>
+    <div class="hero-desc" data-en="Private Luxury Concierge" data-fr="Conciergerie privée de luxe" data-zh="私人尊享礼宾服务">Private Luxury Concierge</div>
+    <div class="hero-body">
+      <h1 data-en="We make the impossible, effortless." data-fr="Rendre l'impossible, évident." data-zh="化不可能，为理所当然。">We make the impossible, effortless.</h1>
+      <p data-en="A suite that was never listed. A table that closed three weeks ago. A seat on the night everyone wanted one. You tell us when, we handle the rest, and you never see how." data-fr="Une suite jamais proposée à la réservation. Une table complète depuis trois semaines. La place que tout le monde s&#x27;arrache. Dites-nous quand, nous nous occupons du reste." data-zh="一间从未公开预订的套房。一张三周前已经订满的餐桌。一个人人争抢的夜晚里的一席之地。您只需告知时间，其余的交给我们——您无需知道，我们是如何做到的。">A suite that was never listed. A table that closed three weeks ago. A seat on the night everyone wanted one. You tell us when, we handle the rest, and you never see how.</p>
+    </div>
+    <div class="places">
+      <span>Paris</span><i></i>
+      <span>Europe</span><i></i>
+      <span data-en="Indian Ocean" data-fr="Océan Indien" data-zh="印度洋">Indian Ocean</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-accent" href="https://wa.me/33613850733" data-en="Enquire on WhatsApp" data-fr="Nous écrire sur WhatsApp" data-zh="WhatsApp咨询">Enquire on WhatsApp</a>
+      <a class="btn" href="#services" data-en="What we do" data-fr="Ce que nous faisons" data-zh="我们的服务">What we do</a>
+    </div>
+  </div>
+</div>
+
+<section id="method" class="sec-white">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow"><span class="n">01</span><span class="t" data-en="Method" data-fr="Méthode" data-zh="服务流程">Method</span></div>
+      <h2 data-en="Four steps, no grey areas." data-fr="Quatre étapes, aucune zone grise." data-zh="四个步骤，清晰透明，绝无含糊。">Four steps, no grey areas.</h2>
+      <p class="lede" data-en="You always know where your request stands. If something cannot be done, we say so straight away and come back with an alternative, never at the last minute." data-fr="Vous savez à tout moment où en est votre demande. Si quelque chose n&#x27;est pas possible, nous vous le disons tout de suite et nous vous proposons une autre solution, jamais à la dernière minute." data-zh="您的每一项需求进展，我们都会让您随时掌握。如果某件事无法实现，我们会第一时间坦诚相告，并立即提供替代方案，绝不会拖到最后一刻。">You always know where your request stands.</p>
+    </div>
+
+    <ol class="timeline reveal">
+      <li class="tl-step">
+        <span class="tl-k">01</span>
+        <h3 data-en="The request" data-fr="La demande" data-zh="需求提出">The request</h3>
+        <p data-en="A message. Dates, city, and roughly what you have in mind. Nothing else is needed to start, and there is no form to fill in." data-fr="Un simple message : les dates, la ville, et une idée de ce que vous souhaitez. Il n&#x27;en faut pas plus pour commencer, et aucun formulaire à remplir." data-zh="一条消息即可开始。日期、城市，以及您大致的想法。无需填写任何表格，仅此而已。">A message. Dates, city, and roughly what you have in mind.</p>
+      </li>
+      <li class="tl-step">
+        <span class="tl-k">02</span>
+        <h3 data-en="The answer" data-fr="La réponse" data-zh="我们的回复">The answer</h3>
+        <p data-en="What is available, what it costs, and how long the option holds. In writing. We do not promise anything we cannot deliver." data-fr="Ce qui est disponible, le prix, et jusqu&#x27;à quand l&#x27;option est garantie. Le tout par écrit. Nous ne promettons jamais ce que nous ne pouvons pas tenir." data-zh="可安排的方案、费用，以及保留期限，皆以书面形式确认。我们从不承诺无法兑现之事。">What is available, what it costs, and how long the option holds.</p>
+      </li>
+      <li class="tl-step">
+        <span class="tl-k">03</span>
+        <h3 data-en="On the ground" data-fr="Sur place" data-zh="行程之中">On the ground</h3>
+        <p data-en="One contact from start to finish, reachable at any hour and in any time zone. If a table falls through at seven, another one is standing at eight." data-fr="Un seul interlocuteur du début à la fin, joignable à toute heure, où que vous soyez. Si une réservation saute à 19 h, une autre table vous attend à 20 h." data-zh="从始至终，只有一位专属联络人，随时随地为您服务，跨越所有时区。若七点的餐桌意外落空，八点已备好另一席。">One contact from start to finish, reachable at any hour and in any time zone.</p>
+      </li>
+      <li class="tl-step">
+        <span class="tl-k">04</span>
+        <h3 data-en="Afterwards" data-fr="Après" data-zh="离开之后">Afterwards</h3>
+        <p data-en="Nothing leaves. Your name, your dates and your itinerary are never disclosed or confirmed to anyone, including to other clients and to the press. During, and long after." data-fr="Rien ne filtre. Votre nom, vos dates et votre programme ne sont jamais révélés ni confirmés à qui que ce soit, ni aux autres clients, ni à la presse. Pendant votre séjour, et bien après." data-zh="一切不外泄。您的姓名、行程与出行安排，我们从不向任何人透露或确认，包括其他客户与媒体。无论当下，还是很久以后。">Nothing leaves. Your name, your dates and your itinerary are never disclosed or confirmed to anyone.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="services" class="sec-dark nv-svc">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow"><span class="n">02</span><span class="t" data-en="Services" data-fr="Services" data-zh="服务">Services</span></div>
+      <h2 data-en="One number. Everything behind it." data-fr="Un seul numéro, et tout le reste suit." data-zh="一个号码，背后是一切。">One number. Everything behind it.</h2>
+      <p class="lede" data-en="No switchboard, no ticket, no account manager discovering your file as you speak. One person already knows it, and answers." data-fr="Pas de standard, pas de ticket, personne qui découvre votre dossier en vous écoutant. Une seule personne le connaît déjà, et c&#x27;est elle qui vous répond." data-zh="没有总机转接，没有工单排队，没有客户经理一边听您说明一边翻查资料。只有一个人，早已了解您的一切，随时应答。">No switchboard, no ticket, no account manager discovering your file as you speak. One person already knows it, and answers.</p>
+    </div>
+    <div class="nv-grid">
+      <ul class="nv-list" id="nvsvc"><li class="on" data-i="0"><picture class="svc-ph"><source type="image/avif" srcset="img/v2-stay-760.avif 760w, img/v2-stay.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-stay.webp" srcset="img/v2-stay-760.webp 760w, img/v2-stay.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy" decoding="async"></picture><span class="t" data-en="Stay" data-fr="Séjour" data-zh="下榻">Stay</span><div><h3 data-en="Palaces and suites" data-fr="Palaces et suites" data-zh="宫殿级酒店与套房">Palaces and suites</h3><p data-en="Rooms and categories that never reach a booking engine. Upgrades arranged before arrival, late check-out held, and amenities set to your preferences rather than a standard list." data-fr="Des chambres et des catégories introuvables sur les sites de réservation. Surclassement réglé avant votre arrivée, late check-out garanti, et des attentions selon vos goûts, pas selon une liste type." data-zh="从不出现在预订系统中的房型与房源。升房提前安排妥当，延迟退房予以保留，各项礼遇皆按您的喜好定制，而非千篇一律的标准清单。">Rooms and categories that never reach a booking engine. Upgrades arranged before arrival, late check-out held, and amenities set to your preferences rather than a standard list.</p></div></li><li data-i="1"><picture class="svc-ph"><source type="image/avif" srcset="img/v2-dining-760.avif 760w, img/v2-dining.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-dining.webp" srcset="img/v2-dining-760.webp 760w, img/v2-dining.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy" decoding="async"></picture><span class="t" data-en="Table" data-fr="Table" data-zh="餐桌">Table</span><div><h3 data-en="Dining" data-fr="Tables" data-zh="餐饮">Dining</h3><p data-en="Tables at short notice in rooms that show nothing available. Private dining rooms, chef&#x27;s counters, and menus adjusted to an allergy, a fast, or a schedule that will not wait." data-fr="Des tables obtenues au dernier moment dans des restaurants complets. Salons privés, chef&#x27;s tables, et des menus adaptés à une allergie, un jeûne ou un emploi du temps serré." data-zh="在显示“满座”的餐厅里，我们仍能为您觅得一席。私人包厢、主厨吧台，菜单可依据过敏、斋戒或紧凑行程灵活调整。">Tables at short notice in rooms that show nothing available. Private dining rooms, chef's counters, and menus adjusted to an allergy, a fast, or a schedule that will not wait.</p></div></li><li data-i="2"><picture class="svc-ph"><source type="image/avif" srcset="img/v2-access-760.avif 760w, img/v2-access.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-access.webp" srcset="img/v2-access-760.webp 760w, img/v2-access.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy" decoding="async"></picture><span class="t" data-en="Access" data-fr="Accès" data-zh="入场">Access</span><div><h3 data-en="Events and access" data-fr="Événements et accès" data-zh="赛事与专属入场">Events and access</h3><p data-en="Formula 1 weekends, Fashion Weeks, Art Basel, Roland-Garros, sold-out shows. The paddock, the courtside, the front row, and the rooms that open afterwards." data-fr="Les week-ends de Formule 1, les Fashion Weeks, Art Basel, Roland-Garros, les spectacles à guichets fermés. Le paddock, le bord de court, le premier rang, et les soirées privées qui suivent." data-zh="F1大奖赛周末、时装周、巴塞尔艺术展、法网公开赛、一票难求的演出——维修区通道、场边席位、前排座席，以及赛后开放的私密场所，皆可安排。">Formula 1 weekends, Fashion Weeks, Art Basel, Roland-Garros, sold-out shows. The paddock, the courtside, the front row, and the rooms that open afterwards.</p></div></li><li data-i="3"><picture class="svc-ph"><source type="image/avif" srcset="img/v2-shopping-760.avif 760w, img/v2-shopping.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-shopping.webp" srcset="img/v2-shopping-760.webp 760w, img/v2-shopping.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy" decoding="async"></picture><span class="t" data-en="Wardrobe" data-fr="Garde-robe" data-zh="衣橱">Wardrobe</span><div><h3 data-en="Shopping and sourcing" data-fr="Shopping et sourcing" data-zh="私人购物与珍品寻觅">Shopping and sourcing</h3><p data-en="Appointments outside opening hours with the major houses, waiting lists, styling, and sourcing pieces that are no longer made." data-fr="Des rendez-vous en dehors des heures d&#x27;ouverture dans les grandes maisons, l&#x27;accès aux listes d&#x27;attente, du styling, et la recherche de pièces qui ne se fabriquent plus." data-zh="非营业时段与各大品牌的专属预约、排队名单、造型顾问，以及已停产单品的搜寻。">Appointments outside opening hours with the major houses, waiting lists, styling, and sourcing pieces that are no longer made.</p></div></li><li data-i="4"><picture class="svc-ph"><source type="image/avif" srcset="img/v2-transport-760.avif 760w, img/v2-transport.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-transport.webp" srcset="img/v2-transport-760.webp 760w, img/v2-transport.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy" decoding="async"></picture><span class="t" data-en="Movement" data-fr="Déplacement" data-zh="出行">Movement</span><div><h3 data-en="Private transport" data-fr="Transport privé" data-zh="私人用车">Private transport</h3><p data-en="Chauffeurs who know the city and never talk about it, airport and terminal transfers, long-distance journeys, and a helicopter leg where the road would cost three hours." data-fr="Des chauffeurs qui connaissent la ville et savent rester discrets, des transferts depuis l&#x27;aéroport ou depuis la gare, de longs trajets, et un hélicoptère quand la route prendrait trois heures." data-zh="熟悉城市、守口如瓶的专属司机，机场与火车站接送，长途出行；若开车要三小时，便改乘直升机。">Chauffeurs who know the city and never talk about it, airport and terminal transfers, long-distance journeys, and a helicopter leg where the road would cost three hours.</p></div></li><li data-i="5"><picture class="svc-ph"><source type="image/avif" srcset="img/v2-season-760.avif 760w, img/v2-season.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-season.webp" srcset="img/v2-season-760.webp 760w, img/v2-season.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy" decoding="async"></picture><span class="t" data-en="Water" data-fr="Mer" data-zh="海上">Water</span><div><h3 data-en="Villas and charters" data-fr="Villas et yachts" data-zh="别墅与游艇包船">Villas and charters</h3><p data-en="Staffed villas by the week, yachts by the day or by the season, with crew, tender and chef. Provisioning, berths and shore transfers form one plan rather than four separate bookings." data-fr="Des villas avec personnel à la semaine, des yachts à la journée ou pour la saison, avec équipage, annexe et chef. Avitaillement, places au port et transferts à terre : tout est organisé ensemble." data-zh="配备管家团队的别墅可按周入住，游艇可按日或按季包船，配有船员、接驳艇与私厨。补给、泊位与岸上接送统一规划，而非四份独立预订。">Staffed villas by the week, yachts by the day or by the season, with crew, tender and chef. Provisioning, berths and shore transfers form one plan rather than four separate bookings.</p></div></li><li data-i="6"><picture class="svc-ph"><source type="image/avif" srcset="img/v2-evening-760.avif 760w, img/v2-evening.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-evening.webp" srcset="img/v2-evening-760.webp 760w, img/v2-evening.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy" decoding="async"></picture><span class="t" data-en="Evening" data-fr="Soirée" data-zh="夜晚">Evening</span><div><h3 data-en="Evenings and closed rooms" data-fr="Soirées et lieux privés" data-zh="夜生活与私密场所">Evenings and closed rooms</h3><p data-en="Private clubs, booths that are never sold, and evenings built around a guest list rather than a venue. Entry is arranged before you arrive, never negotiated at the door." data-fr="Clubs privés, tables jamais mises en vente, et des soirées pensées autour des invités plutôt que du lieu. Votre entrée est réglée avant votre arrivée, jamais négociée à la porte." data-zh="私人会所、从不对外出售的卡座，以及以宾客名单而非场地为核心安排的夜晚。入场事先安排妥当，从不在门口交涉。">Private clubs, booths that are never sold, and evenings built around a guest list rather than a venue. Entry is arranged before you arrive, never negotiated at the door.</p></div></li></ul>
+      <div class="nv-img" id="nvimg"><picture><source type="image/avif" srcset="img/v2-stay-760.avif 760w, img/v2-stay.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img class="on" src="img/v2-stay.webp" srcset="img/v2-stay-760.webp 760w, img/v2-stay.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy"></picture><picture><source type="image/avif" srcset="img/v2-dining-760.avif 760w, img/v2-dining.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-dining.webp" srcset="img/v2-dining-760.webp 760w, img/v2-dining.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy"></picture><picture><source type="image/avif" srcset="img/v2-access-760.avif 760w, img/v2-access.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-access.webp" srcset="img/v2-access-760.webp 760w, img/v2-access.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy"></picture><picture><source type="image/avif" srcset="img/v2-shopping-760.avif 760w, img/v2-shopping.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-shopping.webp" srcset="img/v2-shopping-760.webp 760w, img/v2-shopping.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy"></picture><picture><source type="image/avif" srcset="img/v2-transport-760.avif 760w, img/v2-transport.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-transport.webp" srcset="img/v2-transport-760.webp 760w, img/v2-transport.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy"></picture><picture><source type="image/avif" srcset="img/v2-season-760.avif 760w, img/v2-season.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-season.webp" srcset="img/v2-season-760.webp 760w, img/v2-season.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy"></picture><picture><source type="image/avif" srcset="img/v2-evening-760.avif 760w, img/v2-evening.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-evening.webp" srcset="img/v2-evening-760.webp 760w, img/v2-evening.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="" loading="lazy"></picture></div>
+    </div>
+  </div>
+</section>
+
+<section id="destinations" class="sec-white">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow"><span class="n">03</span><span class="t" data-en="Destinations" data-fr="Destinations" data-zh="目的地">Destinations</span></div>
+      <h2 data-en="Among the places we go." data-fr="Parmi nos destinations." data-zh="我们常去的地方。">Among the places we go.</h2>
+      <p class="lede" data-en="Paris first, then wherever the season takes you. And further, when you ask: Ibiza, Mykonos, London, Milan, and wherever else you have in mind." data-fr="Paris d&#x27;abord, puis là où la saison vous emmène. Et plus loin si vous le demandez : Ibiza, Mykonos, Londres, Milan, et partout où vous avez envie d&#x27;aller." data-zh="从巴黎出发，随季节而行。若您有意，我们也可以走得更远：伊维萨、米科诺斯、伦敦、米兰，以及任何您心之所向的地方。">Paris first, then wherever the season takes you. And further, when you ask: Ibiza, Mykonos, London, Milan, and wherever else you have in mind.</p>
+    </div>
+    <div class="nv-dest">
+      <a class="nd nd1 reveal" href="paris.html"><picture><source type="image/avif" srcset="img/v2-paris-760.avif 760w, img/v2-paris.avif 1400w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-paris.webp" srcset="img/v2-paris-760.webp 760w, img/v2-paris.webp 1400w" sizes="(max-width:900px) 100vw, 1100px" alt="Paris at dusk" data-alt-en="Paris at dusk" data-alt-fr="Paris au crépuscule" data-alt-zh="黄昏时的巴黎" loading="lazy"></picture><div class="in"><span data-en="The base" data-fr="Notre base" data-zh="大本营">The base</span><h3 data-en="Paris" data-fr="Paris" data-zh="巴黎">Paris</h3><p data-en="Palaces, starred tables, Fashion Week, the houses of the Faubourg." data-fr="Palaces, tables étoilées, Fashion Week, les maisons du Faubourg-Saint-Honoré." data-zh="殿堂级酒店、米其林餐桌、时装周，以及圣奥诺雷街的各大名店。">Palaces, starred tables, Fashion Week, the houses of the Faubourg.</p></div></a>
+      <a class="nd nd2 reveal" href="saison-ski-2026-2027.html"><picture><source type="image/avif" srcset="img/v2-alps-760.avif 760w, img/v2-alps.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-alps.webp" srcset="img/v2-alps-760.webp 760w, img/v2-alps.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="A chalet at night in the Alps" data-alt-en="A chalet at night in the Alps" data-alt-fr="Un chalet la nuit dans les Alpes" data-alt-zh="阿尔卑斯山间的夜色木屋" loading="lazy"></picture><div class="in"><span data-en="Winter" data-fr="L&#x27;hiver" data-zh="冬季">Winter</span><h3 data-en="The Alps" data-fr="Les Alpes" data-zh="阿尔卑斯">The Alps</h3><p data-en="Courchevel, Megève, Gstaad. A season held a step ahead." data-fr="Courchevel, Megève, Gstaad. Une saison préparée avec un temps d&#x27;avance." data-zh="库舍维尔、梅杰夫、格施塔德。雪季，我们总是提前一步。">Courchevel, Megève, Gstaad. A season held a step ahead.</p></div></a>
+      <a class="nd nd3 reveal" href="riviera.html"><picture><source type="image/avif" srcset="img/v2-riviera-760.avif 760w, img/v2-riviera.avif 1100w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-riviera.webp" srcset="img/v2-riviera-760.webp 760w, img/v2-riviera.webp 1100w" sizes="(max-width:900px) 100vw, 1100px" alt="A table above the sea on the Riviera" data-alt-en="A table above the sea on the Riviera" data-alt-fr="Une table au-dessus de la mer, sur la Riviera" data-alt-zh="蔚蓝海岸，临海而设的餐桌" loading="lazy"></picture><div class="in"><span data-en="Summer" data-fr="L&#x27;été" data-zh="夏季">Summer</span><h3 data-en="The Riviera" data-fr="La Riviera" data-zh="蔚蓝海岸">The Riviera</h3><p data-en="Monaco, Saint-Tropez, Cannes. Villas, boats, the Grand Prix." data-fr="Monaco, Saint-Tropez, Cannes. Villas, bateaux, le Grand Prix." data-zh="摩纳哥、圣特罗佩、戛纳。别墅、游艇与大奖赛。">Monaco, Saint-Tropez, Cannes. Villas, boats, the Grand Prix.</p></div></a>
+      <a class="nd nd4 reveal" href="ocean-indien.html"><picture><source type="image/avif" srcset="img/v2-mauritius-760.avif 760w, img/v2-mauritius.avif 1400w" sizes="(max-width:900px) 100vw, 1100px"><img src="img/v2-mauritius.webp" srcset="img/v2-mauritius-760.webp 760w, img/v2-mauritius.webp 1400w" sizes="(max-width:900px) 100vw, 1100px" alt="The beach of LUX* Le Morne, Mauritius" data-alt-en="The beach of LUX* Le Morne, Mauritius" data-alt-fr="La plage du LUX* Le Morne, à Maurice" data-alt-zh="毛里求斯LUX* Le Morne酒店的海滩" loading="lazy"></picture><div class="in"><span data-en="Counter-season" data-fr="Contre-saison" data-zh="反季之选">Counter-season</span><h3 data-en="Indian Ocean" data-fr="Océan Indien" data-zh="印度洋">Indian Ocean</h3><p data-en="Mauritius, Réunion, the Maldives. Open when Europe closes." data-fr="Maurice, La Réunion, les Maldives. Le soleil quand l&#x27;Europe hiberne." data-zh="毛里求斯、留尼汪、马尔代夫。欧洲淡季时，这里正当时。">Mauritius, Réunion, the Maldives. Open when Europe closes.</p></div></a>
+    </div>
+    <p class="lede" style="margin-top:44px"><span data-en="UNSEEN. belongs to no group and no booking network: we recommend an address because it is the right one. Agencies, jet operators, sports management:" data-fr="UNSEEN. n&#x27;appartient à aucun groupe ni réseau de réservation : nous recommandons une adresse parce que c&#x27;est la bonne. Agences, compagnies d&#x27;aviation privée, agents de sportifs :" data-zh="UNSEEN.不隶属于任何集团或预订网络：我们推荐一个地方，只因为它是对的。旅行社、私人航空公司、体育经纪机构：">UNSEEN. belongs to no group and no booking network: we recommend an address because it is the right one. Agencies, jet operators, sports management:</span> <a href="professionals.html" class="nv-link" data-en="working with us &amp;rarr;" data-fr="travailler avec nous &amp;rarr;" data-zh="与我们合作 &amp;rarr;">working with us &rarr;</a></p>
+  </div>
+</section>
+
+
+
+
+
+<section id="map" class="sec-dark nv-map">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow"><span class="n">04</span><span class="t" data-en="Map" data-fr="Carte" data-zh="地图">Map</span></div>
+      <h2 data-en="Paris is where it starts." data-fr="Tout commence à Paris." data-zh="一切，从巴黎开始。">Paris is where it starts.</h2>
+      <p class="lede" data-en="A few ideas of what we arrange, from Paris to wherever the season is. Choose a point." data-fr="Quelques idées de ce que nous organisons, de Paris jusqu&#x27;aux destinations de saison. Choisissez un point sur la carte." data-zh="从巴黎到当季所在之处，这是我们可以为您安排的一些灵感。请点选地图上的地点。">A few ideas of what we arrange, from Paris to wherever the season is. Choose a point.</p>
+    </div>
+    <div class="nv-mapgrid">
+      <div class="nv-eu"><svg id="europe" viewBox="0 0 560 420" role="img" aria-label="Map of Europe with UNSEEN. destinations"><g><path class="land" d="M1102.6,-325.0L1121.5,-327.7L1148.0,-321.7L1184.7,-309.8L1193.8,-298.4L1172.6,-296.8L1140.0,-300.5L1118.0,-305.4L1101.3,-314.3L1084.9,-316.7L1102.6,-325.0ZM1218.7,-303.5L1252.7,-296.2L1255.0,-291.0L1200.6,-285.9L1203.0,-302.9L1210.1,-304.3L1218.7,-303.5ZM1646.1,-262.0L1675.3,-261.4L1723.2,-254.1L1727.0,-243.8L1686.4,-244.1L1672.0,-240.8L1640.1,-249.9L1635.0,-259.4L1646.1,-262.0ZM1760.9,-251.1L1792.7,-247.4L1786.9,-241.9L1767.9,-243.2L1741.0,-248.7L1738.1,-253.2L1760.9,-251.1ZM1701.4,-223.3L1705.7,-228.9L1718.1,-230.2L1739.9,-224.8L1745.4,-221.0L1728.7,-220.9L1704.2,-222.5L1701.4,-223.3ZM608.9,-319.8L627.6,-322.0L643.0,-322.1L646.9,-318.8L651.1,-321.7L659.6,-323.7L676.2,-321.1L673.4,-319.2L660.6,-317.6L651.9,-316.7L651.5,-314.7L640.6,-312.6L628.0,-315.6L631.8,-319.4L608.9,-319.8ZM446.0,73.0L422.1,73.2L406.0,71.3L408.1,64.0L425.4,58.7L439.2,61.5L445.2,64.2L444.4,68.7L446.0,73.0ZM742.0,-228.7L762.9,-241.1L757.1,-247.4L777.9,-254.7L809.0,-263.5L843.4,-266.1L858.8,-271.1L878.6,-272.8L889.3,-267.5L884.6,-263.3L850.2,-256.5L820.6,-249.9L793.2,-236.6L783.0,-222.8L771.6,-209.0L778.8,-196.9L805.5,-184.9L799.3,-183.6L761.4,-185.5L755.8,-192.0L733.8,-195.9L729.2,-203.8L739.5,-206.9L735.9,-214.8L752.9,-226.9L742.0,-228.7ZM2012.2,83.4L2028.3,99.5L2039.7,116.1L2056.9,133.2L2090.5,163.4L2067.0,157.7L2074.5,182.5L2098.6,200.1L2105.6,212.2L2088.9,201.8L2088.0,215.2L2076.9,200.6L2068.1,183.9L2054.9,165.4L2049.6,152.5L2035.1,129.7L2016.0,113.1L2000.9,90.1L2007.5,82.4L1996.7,74.7L2000.7,72.3L2012.2,83.4ZM1967.6,280.4L1964.1,277.3L1959.6,268.4L1966.4,267.9L1957.9,247.3L1946.5,232.5L1955.0,226.4L1973.3,229.4L1973.1,212.5L1967.1,193.6L1968.6,187.3L1966.5,171.9L1947.3,177.0L1939.6,183.7L1919.1,183.7L1904.3,167.6L1881.3,155.4L1854.8,150.0L1839.9,133.3L1829.0,122.9L1819.6,115.6L1800.9,98.6L1785.5,92.5L1762.9,87.5L1745.8,87.9L1731.5,90.9L1725.7,99.3L1735.3,103.3L1741.0,112.6L1736.8,118.0L1735.2,136.0L1739.5,143.5L1726.6,154.2L1707.1,147.8L1692.0,149.2L1681.9,143.5L1673.0,141.7L1659.7,153.7L1643.6,156.5L1633.4,160.7L1615.2,157.9L1602.8,158.1L1590.4,149.4L1573.3,141.2L1558.8,139.0L1543.1,141.2L1532.0,144.4L1509.7,137.2L1501.0,124.5L1483.3,120.1L1470.4,118.2L1452.3,111.2L1446.9,128.7L1456.9,138.7L1449.4,150.6L1428.2,146.3L1414.6,145.6L1402.2,137.7L1388.3,137.5L1374.4,132.2L1357.6,140.2L1338.3,154.9L1325.4,157.9L1320.7,159.3L1309.5,148.8L1293.2,151.1L1284.6,143.9L1274.0,140.6L1263.8,130.8L1255.2,127.7L1237.9,132.1L1215.8,122.3L1212.2,131.2L1166.3,88.4L1144.5,75.5L1147.2,70.3L1120.8,86.0L1108.6,87.0L1106.3,77.8L1087.5,72.2L1075.5,76.2L1065.0,59.0L1040.5,55.4L1031.4,62.3L1001.2,68.4L996.2,72.5L949.6,78.3L945.4,84.0L958.4,95.5L947.2,99.9L951.0,104.4L940.8,112.7L965.6,124.3L964.7,132.3L945.8,131.6L943.4,136.6L923.9,127.8L903.1,128.2L890.9,135.3L873.4,128.5L841.3,116.7L820.8,117.2L797.8,135.6L799.0,148.0L783.1,138.2L776.6,156.9L781.2,160.3L776.2,173.3L790.0,185.0L800.0,184.5L811.0,196.0L811.4,204.9L819.0,207.7L814.8,217.9L802.2,220.8L792.0,238.7L807.6,255.2L808.4,267.0L827.2,287.6L820.2,294.6L818.5,299.1L812.2,297.9L800.8,287.2L796.8,286.7L787.3,282.6L781.8,275.4L768.3,271.8L760.3,274.5L757.4,271.3L737.2,262.9L716.4,260.1L704.2,257.1L702.9,259.1L683.0,244.4L666.4,237.9L653.0,227.7L662.5,224.9L671.6,210.4L662.8,203.6L681.7,196.5L680.7,192.8L669.0,195.5L668.2,187.9L674.3,183.1L687.2,181.8L688.3,176.1L683.6,166.7L687.5,157.7L686.4,152.7L665.7,147.1L658.0,147.3L648.3,139.3L638.6,142.0L620.7,136.1L620.5,132.7L614.5,125.4L603.8,124.6L601.8,119.3L604.6,115.9L594.6,106.4L581.2,108.0L577.1,107.1L574.4,110.9L569.4,110.3L564.5,99.5L560.5,93.9L562.8,92.4L573.4,92.9L577.9,89.3L573.4,84.8L564.1,81.9L564.4,78.9L558.6,75.8L548.7,64.9L550.8,60.5L548.3,52.7L535.0,48.8L528.6,50.7L526.2,46.6L512.0,42.5L506.4,32.8L504.1,24.8L497.4,21.1L502.1,15.9L495.9,0.8L503.4,-8.6L501.0,-11.4L513.8,-20.3L499.4,-27.9L522.3,-48.2L531.9,-57.3L535.0,-65.4L514.9,-76.1L517.9,-86.3L504.8,-97.8L510.3,-111.0L493.1,-128.4L501.6,-139.9L481.8,-149.9L481.4,-160.4L490.4,-161.8L508.7,-167.7L519.4,-172.9L540.4,-163.9L572.8,-160.4L621.3,-143.4L632.2,-136.2L635.8,-126.1L624.9,-118.1L606.6,-114.0L551.0,-125.6L542.8,-123.7L564.6,-112.5L567.0,-105.3L571.4,-89.5L588.0,-84.8L598.3,-80.8L598.1,-88.3L589.3,-95.0L595.5,-100.8L626.9,-91.2L636.0,-95.0L625.0,-106.3L648.6,-121.3L659.7,-120.4L672.3,-115.1L676.1,-125.6L663.6,-134.6L666.6,-143.7L655.2,-153.0L689.2,-148.2L698.6,-139.7L684.4,-137.9L687.0,-129.4L698.0,-124.2L715.1,-127.5L714.8,-137.2L736.8,-144.4L772.7,-157.3L781.7,-156.6L773.7,-147.4L788.7,-145.9L795.1,-151.0L816.7,-151.4L831.4,-157.6L848.3,-148.6L857.3,-158.5L841.5,-167.2L845.4,-172.1L881.3,-167.6L899.4,-162.9L949.3,-145.8L953.4,-153.7L937.8,-161.6L936.0,-164.7L921.4,-166.2L921.8,-173.2L910.1,-184.7L907.5,-189.4L921.7,-202.6L922.2,-215.8L928.9,-218.6L960.5,-214.8L967.2,-206.8L963.0,-195.0L972.5,-190.3L981.6,-180.1L989.5,-159.7L1007.0,-150.6L1007.1,-140.5L994.6,-118.9L1009.2,-116.7L1011.2,-122.2L1022.3,-126.1L1021.7,-133.6L1028.1,-140.8L1016.9,-149.4L1017.2,-159.3L1003.9,-160.5L996.8,-168.8L998.0,-183.6L976.8,-195.6L991.6,-205.3L983.1,-215.6L988.5,-215.9L999.0,-207.9L1002.5,-193.9L1016.1,-191.3L1005.0,-201.8L1020.4,-207.5L1043.3,-208.2L1069.0,-200.0L1051.7,-212.0L1041.0,-227.3L1058.4,-230.1L1085.4,-229.5L1108.0,-231.3L1094.0,-238.7L1100.1,-247.9L1112.4,-248.3L1128.3,-255.1L1155.5,-257.0L1156.1,-260.7L1183.4,-262.0L1194.7,-258.9L1212.8,-266.2L1232.7,-265.9L1230.5,-271.8L1235.4,-277.5L1255.3,-283.0L1277.6,-278.7L1266.3,-275.4L1292.4,-273.3L1301.6,-266.6L1308.3,-269.9L1339.7,-269.8L1370.4,-263.1L1384.1,-258.0L1388.2,-250.8L1380.1,-246.7L1358.4,-238.9L1353.8,-234.8L1369.2,-232.8L1388.7,-229.2L1396.2,-231.9L1410.0,-222.8L1411.5,-226.5L1427.2,-228.7L1464.8,-226.4L1473.7,-219.7L1522.2,-217.6L1512.3,-228.5L1538.3,-226.0L1555.8,-226.1L1581.2,-218.5L1595.4,-209.3L1594.7,-203.3L1619.8,-191.8L1643.4,-185.9L1639.4,-201.2L1664.0,-194.7L1679.3,-198.6L1705.7,-194.1L1709.8,-198.2L1730.4,-196.1L1708.1,-209.6L1716.2,-215.9L1827.5,-206.5L1846.8,-197.9L1888.9,-186.7L1931.6,-189.5L1957.0,-187.1L1973.5,-181.0L1984.5,-170.2L2003.5,-166.0L2015.4,-169.0L2035.3,-169.4L2060.5,-166.5L2080.3,-168.1L2116.2,-154.8L2124.8,-159.6L2104.0,-169.1L2101.1,-175.7L2142.7,-171.6L2165.5,-172.5L2207.4,-165.4L2231.8,-158.9L2274.7,-147.4L2324.3,-132.4L2335.1,-122.9L2347.8,-119.1L2331.2,-130.2L2366.0,-127.9L-1865.2,-113.6L2403.8,-107.0L2386.3,-105.4L2404.4,-90.2L2403.5,-87.0L2391.6,-87.5L2376.0,-92.9L2354.7,-97.4L2344.0,-104.1L2328.8,-106.6L2317.6,-104.6L2304.7,-110.0L2300.5,-115.7L2290.6,-112.1L2304.6,-104.9L2305.5,-98.3L2305.5,-98.2L2298.0,-91.4L2281.1,-92.6L2301.4,-84.3L2323.3,-71.4L2333.6,-67.2L2342.3,-60.7L2343.8,-56.5L2317.2,-59.9L2295.8,-48.0L2286.9,-46.2L2279.7,-35.0L2271.7,-25.2L2274.5,-17.9L2245.6,-29.0L2225.7,-16.4L2214.2,-22.4L2208.9,-15.5L2190.1,-17.7L2196.1,-7.1L2195.6,8.6L2202.1,15.1L2219.8,18.8L2239.6,42.6L2228.2,43.3L2234.7,57.1L2246.2,64.2L2230.7,72.7L2241.8,91.8L2225.5,95.9L2235.0,112.9L2227.9,128.7L2214.3,117.1L2189.7,92.5L2152.6,55.5L2139.6,32.7L2141.9,22.9L2135.8,15.2L2152.3,11.6L2156.1,-8.8L2162.0,-25.3L2171.9,-38.1L2159.3,-60.4L2145.8,-59.0L2151.5,-46.0L2137.2,-28.5L2108.2,-48.1L2081.7,-42.7L2075.4,-15.9L2094.7,-6.1L2070.4,-1.8L2052.4,-0.2L2043.1,-11.8L2021.6,-14.3L2013.0,-6.4L1972.3,-9.1L1935.0,-4.4L1919.3,27.4L1898.8,66.3L1920.7,68.4L1934.4,78.8L1949.7,82.5L1952.1,74.2L1967.1,75.3L1999.1,93.7L2009.6,108.0L2010.8,124.8L2023.2,145.1L2034.6,172.4L2029.4,197.3L2031.8,209.3L2024.8,229.4L2017.2,249.5L2013.8,259.8L2000.6,270.0L1992.0,270.3L1979.0,261.8L1966.8,274.5L1967.6,280.4ZM2182.9,-196.6L2183.6,-197.2L2193.1,-197.1L2215.1,-193.0L2216.8,-191.0L2209.8,-187.5L2196.2,-186.6L2184.7,-185.8L2176.6,-190.5L2182.9,-196.6ZM606.9,215.1L609.9,210.8L620.1,214.5L624.6,215.2L626.9,218.6L629.0,219.1L629.3,220.6L636.6,224.8L650.4,223.8L648.6,229.9L634.1,233.0L616.9,243.0L608.8,239.5L610.7,231.3L595.0,226.2L597.0,222.9L609.3,217.1L606.9,215.1Z"/><path class="land eu" d="M307.6,-308.5L310.8,-312.7L325.8,-313.1L339.6,-308.8L375.7,-299.4L350.4,-294.3L346.3,-284.7L337.5,-282.2L334.1,-271.1L321.3,-270.6L297.3,-278.8L306.3,-283.5L290.0,-287.3L268.3,-298.2L259.1,-308.2L286.6,-312.7L292.9,-308.3L307.6,-308.5ZM508.7,-167.7L490.4,-161.8L481.4,-160.4L484.1,-170.8L468.2,-176.7L451.4,-171.7L447.7,-160.8L437.9,-154.2L424.8,-157.8L409.9,-157.1L395.8,-164.9L389.5,-161.0L382.4,-160.4L382.1,-150.5L359.9,-153.0L357.9,-144.6L346.6,-144.6L340.1,-133.9L330.1,-117.0L313.7,-95.3L318.5,-90.0L314.8,-83.8L302.9,-84.1L296.2,-69.5L298.5,-48.5L306.9,-40.5L304.2,-21.7L294.6,-10.7L289.7,-1.4L280.7,-11.3L256.9,7.4L240.2,11.2L222.5,3.0L217.4,-14.4L212.4,-51.2L223.3,-61.4L254.8,-74.6L277.7,-90.6L297.9,-112.2L323.6,-141.6L341.8,-152.9L371.2,-171.6L395.4,-178.1L414.3,-177.3L429.5,-189.5L450.3,-188.8L470.1,-191.7L508.0,-181.0L494.1,-177.0L508.7,-167.7ZM432.9,-313.2L419.5,-306.5L389.8,-305.0L358.8,-307.1L356.2,-310.6L341.4,-310.8L329.1,-316.5L359.9,-319.9L375.4,-316.9L384.9,-320.6L411.5,-317.5L432.9,-313.2ZM412.3,-285.0L389.8,-279.6L370.5,-282.7L377.1,-286.1L369.9,-290.3L391.1,-292.9L396.4,-288.0L412.3,-285.0Z"/><path class="land eu" d="M-633.9,952.5L-643.1,968.6L-647.9,981.6L-653.9,988.2L-661.1,989.5L-663.2,984.5L-666.6,983.8L-671.3,988.6L-677.9,984.9L-673.9,977.5L-672.5,969.5L-669.7,961.9L-675.5,951.5L-676.5,939.5L-668.3,924.3L-663.1,926.3L-652.1,930.4L-636.3,945.3L-633.9,952.5ZM233.9,155.0L240.3,159.5L259.7,162.7L253.3,174.4L252.1,186.6L248.4,189.6L242.2,188.0L242.8,192.4L233.1,202.0L233.1,209.9L239.5,207.2L244.4,214.7L244.0,219.6L248.2,226.1L243.6,231.4L247.5,244.9L255.1,247.1L253.7,254.6L241.4,264.5L214.1,259.8L194.1,265.4L192.6,275.9L176.5,278.2L160.9,270.3L155.8,274.1L130.4,266.1L124.9,259.4L132.1,248.9L134.9,214.3L121.0,196.2L111.1,187.5L90.6,180.9L89.5,168.4L107.0,164.6L129.4,169.0L125.3,149.7L137.9,157.0L169.0,143.7L172.9,129.8L184.4,126.4L186.4,132.3L192.6,132.6L198.9,139.4L208.3,147.5L215.1,146.1L227.0,153.9L230.0,155.4L233.9,155.0ZM272.4,273.2L281.1,266.6L284.0,281.6L279.8,295.1L273.4,291.5L269.8,279.7L272.4,273.2Z"/><path class="land" d="M289.1,490.6L282.1,458.8L273.1,451.6L272.8,447.3L260.8,436.8L259.3,423.5L267.9,413.6L270.8,399.0L268.2,382.2L270.8,373.1L286.1,366.0L296.1,368.1L295.9,377.0L307.8,370.5L308.9,373.9L302.1,382.6L302.3,390.7L307.3,395.1L306.0,410.4L296.8,419.3L299.8,429.0L307.3,429.3L311.2,437.7L316.7,440.4L316.3,454.1L309.5,459.2L305.2,464.8L295.4,471.7L297.1,479.0L296.1,486.5L289.1,490.6Z"/><path class="land" d="M23.8,542.2L24.1,538.8L24.1,537.6L24.4,516.6L48.3,503.5L62.8,500.8L74.8,496.0L80.5,487.2L97.6,480.1L98.3,467.0L106.7,465.5L113.3,458.9L132.2,455.9L134.9,449.1L131.1,445.3L126.2,426.6L125.4,415.9L120.1,404.5L133.9,394.8L149.3,391.8L158.3,384.5L172.0,379.1L196.1,376.0L219.6,374.5L226.8,377.1L240.1,370.2L255.3,370.1L261.1,374.2L270.8,373.1L268.2,382.2L270.8,399.0L267.9,413.6L259.3,423.5L260.8,436.8L272.8,447.3L273.1,451.6L282.1,458.8L289.1,490.6L294.2,506.2L295.1,514.5L292.9,528.9L294.2,537.0L292.5,546.7L294.0,557.8L288.3,565.2L297.3,578.2L298.0,585.8L303.5,595.6L310.4,592.4L322.2,600.6L329.0,611.7L278.7,645.4L236.0,680.2L215.0,688.1L198.4,689.8L198.2,678.5L191.2,675.7L181.9,670.6L178.3,662.3L128.2,623.7L78.5,585.1L23.8,542.2Z"/><path class="land eu" d="M289.7,-1.4L294.6,-10.7L304.2,-21.7L306.9,-40.5L298.5,-48.5L296.2,-69.5L302.9,-84.1L314.8,-83.8L318.5,-90.0L313.7,-95.3L330.1,-117.0L340.1,-133.9L346.6,-144.6L357.9,-144.6L359.9,-153.0L382.1,-150.5L382.4,-160.4L389.5,-161.0L406.0,-153.7L425.8,-143.5L429.8,-120.1L434.8,-114.1L415.0,-109.8L405.0,-99.0L408.1,-89.5L390.6,-77.0L368.7,-63.5L362.2,-41.2L372.2,-30.0L385.0,-21.1L375.5,-3.0L362.8,0.8L360.5,28.2L354.6,43.6L339.0,42.0L332.7,55.0L317.9,55.8L312.7,40.2L300.8,21.6L289.7,-1.4Z"/><path class="land" d="M512.0,42.5L526.2,46.6L528.6,50.7L535.0,48.8L548.3,52.7L550.8,60.5L548.7,64.9L558.6,75.8L564.4,78.9L564.1,81.9L573.4,84.8L577.9,89.3L573.4,92.9L562.8,92.4L560.5,93.9L564.5,99.5L569.4,110.3L558.2,111.3L554.7,115.0L555.1,123.5L549.6,121.9L537.8,122.7L533.8,118.7L529.3,121.7L523.9,119.2L513.5,118.9L498.3,114.8L484.8,113.5L474.6,113.9L468.0,118.5L461.7,119.1L460.6,111.6L455.7,103.8L463.1,100.3L462.4,93.7L458.0,87.3L456.6,79.9L469.1,80.0L482.4,73.7L484.2,64.4L494.0,59.0L491.8,51.6L499.2,48.8L512.0,42.5Z"/><path class="land" d="M569.4,110.3L574.4,110.9L577.1,107.1L581.2,108.0L594.6,106.4L604.6,115.9L601.8,119.3L603.8,124.6L614.5,125.4L620.5,132.7L620.7,136.1L638.6,142.0L648.3,139.3L658.0,147.3L665.7,147.1L686.4,152.7L687.5,157.7L683.6,166.7L688.3,176.1L687.2,181.8L674.3,183.1L668.2,187.9L669.0,195.5L658.4,196.9L650.3,202.5L637.7,203.4L627.0,209.9L629.0,219.1L626.9,218.6L624.6,215.2L620.1,214.5L609.9,210.8L606.9,215.1L604.8,213.2L583.0,208.8L581.2,202.4L568.9,204.5L565.1,214.0L556.1,226.8L549.6,223.9L543.5,226.6L537.0,223.4L540.2,221.6L541.9,215.6L545.0,210.1L543.6,207.0L546.3,205.6L547.9,208.0L556.0,208.5L559.5,207.2L556.7,205.5L557.3,202.9L552.0,198.5L549.1,191.3L543.9,188.5L544.1,182.7L537.4,178.1L531.8,177.4L521.2,172.1L512.5,173.8L509.6,176.3L503.9,176.3L501.0,180.3L491.2,182.0L486.9,184.6L480.2,180.4L471.5,180.3L463.0,178.4L457.5,182.1L456.1,177.5L448.2,172.8L450.1,165.9L453.4,161.5L456.4,162.5L452.2,154.8L462.8,140.6L469.2,138.7L470.0,133.9L461.7,119.1L468.0,118.5L474.6,113.9L484.8,113.5L498.3,114.8L513.5,118.9L523.9,119.2L529.3,121.7L533.8,118.7L537.8,122.7L549.6,121.9L555.1,123.5L554.7,115.0L558.2,111.3L569.4,110.3Z"/><path class="land eu" d="M456.6,79.9L458.0,87.3L462.4,93.7L463.1,100.3L455.7,103.8L460.6,111.6L461.7,119.1L470.0,133.9L469.2,138.7L462.8,140.6L452.2,154.8L456.4,162.5L453.4,161.5L440.0,154.9L430.6,157.3L424.2,155.6L416.6,159.2L409.3,153.2L404.0,155.5L403.1,154.5L396.3,146.1L386.3,145.0L384.6,139.7L375.3,137.8L373.7,142.2L366.2,138.7L366.6,134.0L356.7,132.6L350.0,127.1L343.8,116.3L344.4,110.5L340.5,101.5L335.3,95.5L338.6,91.0L335.0,82.5L343.5,77.6L363.1,69.9L378.9,64.3L392.1,67.1L393.4,71.1L406.0,71.3L422.1,73.2L446.0,73.0L452.8,74.8L456.6,79.9Z"/><path class="land eu" d="M379.9,178.0L379.4,185.0L371.8,185.0L374.7,188.8L371.0,199.9L368.6,202.8L356.7,203.2L350.1,207.1L338.8,205.8L319.1,201.3L315.8,195.3L302.6,198.3L301.2,201.6L292.8,199.2L285.8,198.7L279.6,195.5L281.5,191.3L280.9,188.3L284.9,187.3L291.9,192.1L293.6,187.5L305.6,188.3L315.1,185.2L321.6,185.7L326.0,189.2L327.1,186.3L324.5,175.1L329.3,173.0L333.5,165.1L343.8,170.6L351.0,163.6L355.6,162.3L366.4,167.5L372.6,166.6L379.0,169.8L378.1,172.0L379.9,178.0Z"/><path class="land eu" d="M448.2,172.8L456.1,177.5L457.5,182.1L449.6,185.7L444.3,197.4L437.2,209.1L426.5,212.4L418.0,211.6L407.9,216.1L403.0,218.8L391.5,215.4L380.8,208.0L376.3,205.9L373.3,200.0L371.0,199.9L374.7,188.8L371.8,185.0L379.4,185.0L379.9,178.0L387.1,182.4L392.2,184.3L403.4,182.1L404.2,178.7L409.5,178.2L415.8,175.5L417.4,176.6L423.5,174.5L426.3,170.4L430.6,169.4L445.5,174.6L448.2,172.8Z"/><path class="land" d="M509.6,176.3L512.5,173.8L521.2,172.1L531.8,177.4L537.4,178.1L544.1,182.7L543.9,188.5L549.1,191.3L552.0,198.5L557.3,202.9L556.7,205.5L559.5,207.2L556.0,208.5L547.9,208.0L546.3,205.6L543.6,207.0L545.0,210.1L541.9,215.6L540.2,221.6L537.0,223.4L533.6,215.5L534.2,208.2L532.9,200.6L523.8,190.3L518.6,183.1L513.9,178.0L509.6,176.3Z"/><path class="land" d="M537.0,223.4L543.5,226.6L549.6,223.9L556.1,226.8L557.0,231.3L550.8,235.0L546.4,233.4L545.0,254.4L536.7,252.6L526.0,246.2L510.2,250.3L503.8,254.7L483.4,253.8L472.6,251.1L467.4,252.4L462.8,245.2L460.0,242.2L462.9,239.3L459.3,237.1L455.4,241.0L446.9,235.9L445.2,228.8L436.5,224.7L434.5,219.2L426.5,212.4L437.2,209.1L444.3,197.4L449.6,185.7L457.5,182.1L463.0,178.4L471.5,180.3L480.2,180.4L486.9,184.6L491.2,182.0L501.0,180.3L503.9,176.3L509.6,176.3L513.9,178.0L518.6,183.1L523.8,190.3L532.9,200.6L534.2,208.2L533.6,215.5L537.0,223.4Z"/><path class="land" d="M491.8,51.6L494.0,59.0L484.2,64.4L482.4,73.7L469.1,80.0L456.6,79.9L452.8,74.8L446.0,73.0L444.4,68.7L445.2,64.2L439.2,61.5L425.4,58.7L421.1,44.8L435.1,39.7L456.7,40.8L469.1,39.1L471.3,42.6L478.3,43.6L491.8,51.6Z"/><path class="land" d="M497.4,21.1L504.1,24.8L506.4,32.8L512.0,42.5L499.2,48.8L491.8,51.6L478.3,43.6L471.3,42.6L469.1,39.1L456.7,40.8L435.1,39.7L421.1,44.8L420.1,32.4L425.1,22.1L436.4,16.5L448.1,28.7L458.2,28.4L459.0,15.9L469.4,13.0L475.2,15.0L486.9,21.0L497.4,21.1Z"/><path class="land" d="M501.0,-11.4L503.4,-8.6L495.9,0.8L502.1,15.9L497.4,21.1L486.9,21.0L475.2,15.0L469.4,13.0L459.0,15.9L459.1,6.3L454.7,8.3L446.0,2.6L443.6,-6.7L458.8,-11.2L474.2,-13.6L488.2,-10.9L501.0,-11.4Z"/><path class="land eu" d="M335.0,82.5L338.6,91.0L335.3,95.5L340.5,101.5L344.4,110.5L343.8,116.3L350.0,127.1L344.2,128.9L340.6,126.9L337.4,130.1L328.1,133.4L323.4,137.6L314.0,141.4L316.6,146.4L318.5,153.6L325.5,157.7L333.5,165.1L329.3,173.0L324.5,175.1L327.1,186.3L326.0,189.2L321.6,185.7L315.1,185.2L305.6,188.3L293.6,187.5L291.9,192.1L284.9,187.3L280.9,188.3L266.2,183.0L263.5,186.7L252.1,186.6L253.3,174.4L259.7,162.7L240.3,159.5L233.9,155.0L234.4,147.6L231.6,143.7L232.8,132.2L230.1,114.5L238.0,114.5L241.1,108.1L243.8,92.8L241.2,87.1L243.6,83.6L254.5,82.7L257.1,86.3L265.5,78.1L262.3,71.8L261.3,62.4L271.1,64.6L279.3,62.1L279.8,68.5L293.1,72.4L293.3,78.3L306.4,75.2L313.4,70.6L328.4,77.2L335.0,82.5Z"/><path class="land" d="M462.8,245.2L467.4,252.4L472.6,251.1L483.4,253.8L503.8,254.7L510.2,250.3L526.0,246.2L536.7,252.6L545.0,254.4L538.6,261.6L534.9,274.1L540.4,284.1L528.2,281.7L514.6,287.2L515.2,296.0L502.7,297.6L492.3,291.5L481.6,296.3L471.2,295.8L469.3,284.2L461.8,278.6L463.9,276.1L462.3,274.1L464.1,268.5L468.9,263.0L461.5,255.5L459.7,249.1L462.8,245.2Z"/><path class="land eu" d="M527.1,402.2L525.7,407.4L505.2,408.9L505.1,406.0L487.4,402.5L489.6,395.0L497.8,401.0L508.9,400.0L519.6,401.2L519.5,404.3L527.1,402.2ZM471.2,295.8L481.6,296.3L492.3,291.5L502.7,297.6L515.2,296.0L514.6,287.2L521.8,291.9L518.5,302.8L515.4,304.8L506.8,304.3L499.4,302.7L482.9,307.2L493.4,317.1L486.5,320.0L478.7,320.0L470.6,310.9L468.3,314.8L472.2,325.3L479.9,333.5L474.9,337.4L483.4,345.5L490.8,350.6L491.8,360.6L478.3,355.9L483.2,364.9L474.3,366.8L480.8,382.3L471.4,382.6L459.2,374.9L452.9,360.8L449.6,349.0L443.5,340.9L435.6,330.9L434.3,325.9L440.3,317.4L440.6,311.6L445.0,309.1L444.9,304.5L454.0,302.9L459.0,299.1L466.6,299.5L468.6,296.4L471.2,295.8Z"/><path class="land" d="M786.8,369.1L780.4,372.1L774.8,367.6L757.9,365.3L752.2,368.1L736.5,370.8L728.8,370.5L713.3,377.2L701.6,377.2L693.6,373.9L678.5,378.8L673.5,375.4L673.9,385.2L670.4,389.1L667.1,393.0L661.0,384.9L665.6,378.3L657.1,379.8L644.7,375.8L636.0,385.9L614.6,387.9L602.1,378.4L586.7,377.8L584.1,385.2L574.5,387.2L559.9,377.9L544.4,378.2L534.4,360.6L523.2,350.8L528.9,337.1L519.2,328.7L533.2,311.9L554.7,311.2L559.2,297.9L586.0,300.2L601.5,288.8L617.1,283.9L640.0,283.5L666.0,295.9L686.9,302.6L702.8,299.9L715.0,301.5L730.1,292.3L744.9,291.5L759.7,300.1L763.0,306.3L763.0,314.9L774.1,319.2L780.4,324.3L771.5,329.3L779.0,349.5L777.0,355.0L786.8,369.1ZM514.6,287.2L528.2,281.7L540.4,284.1L542.7,290.8L555.5,296.5L553.4,300.8L536.9,301.8L531.5,307.2L520.7,316.6L515.6,308.4L515.4,304.8L518.5,302.8L521.8,291.9L514.6,287.2Z"/><path class="land" d="M444.9,304.5L445.0,309.1L440.6,311.6L440.3,317.4L434.3,325.9L431.8,324.7L431.3,320.8L423.1,314.9L421.3,306.5L421.7,294.6L423.2,289.1L420.6,286.4L419.3,280.8L424.7,272.2L425.8,275.5L429.4,273.9L432.8,278.6L436.2,280.4L437.6,286.7L436.3,292.7L438.8,300.2L444.9,304.5Z"/><path class="land eu" d="M376.3,205.9L380.8,208.0L391.5,215.4L403.0,218.8L407.9,216.1L411.7,222.9L416.5,227.8L411.7,234.3L405.2,230.5L395.8,230.7L383.8,227.8L377.4,228.2L374.7,231.8L369.6,227.8L367.1,235.0L374.4,243.2L377.7,248.6L384.5,255.1L390.0,258.9L395.7,266.2L408.4,272.9L407.1,275.8L393.6,269.4L385.2,263.1L372.2,257.9L359.9,245.1L362.6,243.8L355.8,236.5L355.2,230.6L346.3,227.8L342.5,235.3L338.1,229.5L338.1,223.5L338.6,223.2L348.1,223.8L350.5,220.9L355.3,223.7L360.7,224.1L360.3,219.2L364.9,217.5L365.8,210.5L376.3,205.9Z"/><path class="land eu" d="M280.9,188.3L281.5,191.3L279.6,195.5L285.8,198.7L292.8,199.2L292.0,206.2L286.2,209.1L276.0,207.0L273.3,213.9L266.9,214.5L264.4,211.8L257.0,217.6L250.4,218.4L244.4,214.7L239.5,207.2L233.1,209.9L233.1,202.0L242.8,192.4L242.2,188.0L248.4,189.6L252.1,186.6L263.5,186.7L266.2,183.0L280.9,188.3Z"/><path class="land eu" d="M231.6,143.7L234.4,147.6L233.9,155.0L230.0,155.4L227.0,153.9L228.2,144.4L231.6,143.7Z"/><path class="land eu" d="M232.8,132.2L231.6,143.7L228.2,144.4L227.0,153.9L215.1,146.1L208.3,147.5L198.9,139.4L192.6,132.6L186.4,132.3L184.4,126.4L195.0,123.0L204.7,124.4L216.8,120.9L225.4,128.3L232.8,132.2Z"/><path class="land eu" d="M241.2,87.1L243.8,92.8L241.1,108.1L238.0,114.5L230.1,114.5L232.8,132.2L225.4,128.3L216.8,120.9L204.7,124.4L195.0,123.0L201.7,118.4L212.7,93.6L230.4,86.6L241.2,87.1Z"/><path class="land eu" d="M25.5,286.3L30.7,281.9L36.4,279.3L39.7,287.9L47.9,287.9L50.3,285.6L58.4,286.3L62.1,295.0L55.5,299.8L55.0,313.5L52.7,316.0L51.9,324.4L45.8,325.8L51.2,336.4L47.0,347.9L51.7,353.2L49.7,358.0L44.3,364.6L45.3,370.4L39.5,375.0L32.1,372.5L24.7,374.4L27.2,360.7L26.2,349.8L20.0,348.2L16.8,341.5L18.2,330.0L24.1,323.6L25.3,316.5L28.6,305.9L28.5,298.5L25.9,292.2L25.5,286.3Z"/><path class="land eu" d="M45.3,370.4L44.3,364.6L49.7,358.0L51.7,353.2L47.0,347.9L51.2,336.4L45.8,325.8L51.9,324.4L52.7,316.0L55.0,313.5L55.5,299.8L62.1,295.0L58.4,286.3L50.3,285.6L47.9,287.9L39.7,287.9L36.4,279.3L30.7,281.9L25.5,286.3L26.6,273.9L21.2,266.3L41.1,253.7L57.9,256.8L76.5,256.7L91.1,259.7L102.6,258.8L124.9,259.4L130.4,266.1L155.8,274.1L160.9,270.3L176.5,278.2L192.6,275.9L193.4,286.1L180.4,297.8L162.5,301.5L161.3,307.4L152.6,317.1L147.2,331.4L152.7,341.5L144.6,349.3L141.5,360.8L130.8,364.3L120.6,377.9L102.6,378.2L89.0,377.8L80.0,384.1L74.5,390.7L67.5,389.3L62.3,383.3L58.5,373.2L45.3,370.4Z"/><path class="land eu" d="M70.5,80.6L72.3,92.6L61.9,107.6L38.2,117.6L19.7,115.0L31.1,97.4L25.1,80.4L43.4,67.4L53.5,59.6L55.8,68.5L52.8,77.5L60.8,77.2L70.5,80.6Z"/><path class="land eu" d="M292.8,199.2L301.2,201.6L302.6,198.3L315.8,195.3L319.1,201.3L338.8,205.8L337.8,214.3L341.5,221.7L330.5,219.1L319.7,225.3L320.9,233.9L319.5,238.8L324.4,247.7L337.8,256.5L345.5,270.9L361.7,285.0L372.6,284.9L376.2,288.8L372.5,292.3L385.4,298.6L396.0,303.9L408.6,313.0L410.2,316.3L408.0,322.6L399.7,314.4L387.4,311.5L382.2,322.9L392.7,329.4L391.5,338.6L385.7,339.7L379.0,354.7L373.2,356.1L372.9,350.7L375.3,341.3L378.2,337.5L372.1,327.3L367.4,318.5L361.4,316.3L356.9,308.7L347.7,305.5L341.3,298.4L330.9,297.3L319.7,289.4L306.5,278.0L296.6,267.9L291.7,250.7L284.8,248.7L273.3,242.9L267.1,245.3L259.4,253.4L253.7,254.6L255.1,247.1L247.5,244.9L243.6,231.4L248.2,226.1L244.0,219.6L244.4,214.7L250.4,218.4L257.0,217.6L264.4,211.8L266.9,214.5L273.3,213.9L276.0,207.0L286.2,209.1L292.0,206.2L292.8,199.2ZM359.9,352.0L370.6,350.4L366.2,364.3L368.5,369.8L366.0,378.8L354.8,372.2L347.5,370.3L327.4,361.3L328.9,352.3L345.5,353.9L359.9,352.0ZM272.9,303.5L279.7,298.1L288.5,310.5L287.3,333.8L280.9,332.6L275.3,338.5L269.8,333.9L268.7,312.7L265.2,302.6L272.9,303.5Z"/><path class="land eu" d="M279.3,62.1L271.1,64.6L261.3,62.4L255.6,53.2L254.5,36.4L256.4,32.0L259.9,27.1L271.0,26.0L275.2,21.5L285.1,16.9L285.2,25.3L281.8,30.6L283.6,35.2L290.6,37.7L287.9,43.9L283.9,42.1L275.3,54.0L279.3,62.1ZM309.7,43.4L314.3,51.7L307.5,65.1L293.4,55.8L291.2,48.9L309.7,43.4Z"/><path class="land eu" d="M70.5,80.6L60.8,77.2L52.8,77.5L55.8,68.5L53.5,59.6L64.3,58.9L77.9,69.2L70.5,80.6ZM110.8,88.4L110.8,88.4L112.9,78.7L104.3,68.4L104.2,68.2L88.5,65.3L85.6,60.8L90.5,53.4L86.3,48.8L79.2,56.6L78.9,40.7L72.7,32.4L77.9,15.5L88.1,2.3L98.1,3.6L113.4,2.2L99.5,19.8L112.5,17.6L126.3,17.6L122.9,31.0L111.2,45.7L124.4,46.8L125.4,48.5L136.7,68.0L145.6,70.7L153.6,89.7L157.3,96.3L173.2,99.6L171.7,110.3L165.0,115.3L170.3,124.0L158.4,132.9L140.7,132.7L118.1,137.4L111.9,134.1L103.0,142.0L90.8,140.1L81.3,146.6L74.3,143.2L94.1,125.3L106.0,121.7L105.9,121.7L85.4,118.9L81.8,112.1L95.7,106.9L88.7,97.8L91.4,86.9L110.8,88.4Z"/><path class="land eu" d="M338.8,205.8L350.1,207.1L356.7,203.2L368.6,202.8L371.0,199.9L373.3,200.0L376.3,205.9L365.8,210.5L364.9,217.5L360.3,219.2L360.7,224.1L355.3,223.7L350.5,220.9L348.1,223.8L338.6,223.2L341.5,221.7L337.8,214.3L338.8,205.8Z"/><path class="land eu" d="M481.4,-160.4L481.8,-149.9L501.6,-139.9L493.1,-128.4L510.3,-111.0L504.8,-97.8L517.9,-86.3L514.9,-76.1L535.0,-65.4L531.9,-57.3L522.3,-48.2L499.4,-27.9L477.1,-26.6L456.1,-20.7L436.3,-17.3L427.9,-26.1L415.3,-31.3L416.0,-47.0L408.2,-61.3L412.8,-70.4L422.4,-80.3L447.3,-97.1L454.8,-100.3L452.5,-106.9L434.8,-114.1L429.8,-120.1L425.8,-143.5L406.0,-153.7L389.5,-161.0L395.8,-164.9L409.9,-157.1L424.8,-157.8L437.9,-154.2L447.7,-160.8L451.4,-171.7L468.2,-176.7L484.1,-170.8L481.4,-160.4Z"/><path class="land eu" d="M453.4,161.5L450.1,165.9L448.2,172.8L445.5,174.6L430.6,169.4L426.3,170.4L423.5,174.5L417.4,176.6L415.8,175.5L409.5,178.2L404.2,178.7L403.4,182.1L392.2,184.3L387.1,182.4L379.9,178.0L378.1,172.0L379.0,169.8L380.6,166.1L386.6,166.4L391.1,164.6L391.3,163.0L393.8,162.2L394.4,158.3L397.4,157.6L399.2,154.5L403.1,154.5L404.0,155.5L409.3,153.2L416.6,159.2L424.2,155.6L430.6,157.3L440.0,154.9L453.4,161.5Z"/><path class="land eu" d="M350.0,127.1L356.7,132.6L366.6,134.0L366.2,138.7L373.7,142.2L375.3,137.8L384.6,139.7L386.3,145.0L396.3,146.1L403.1,154.5L399.2,154.5L397.4,157.6L394.4,158.3L393.8,162.2L391.3,163.0L391.1,164.6L386.6,166.4L380.6,166.1L379.0,169.8L372.6,166.6L366.4,167.5L355.6,162.3L351.0,163.6L343.8,170.6L333.5,165.1L325.5,157.7L318.5,153.6L316.6,146.4L314.0,141.4L323.4,137.6L328.1,133.4L337.4,130.1L340.6,126.9L344.2,128.9L350.0,127.1Z"/><path class="land" d="M120.1,404.5L125.4,415.9L126.2,426.6L131.1,445.3L134.9,449.1L132.2,455.9L113.3,458.9L106.7,465.5L98.3,467.0L97.6,480.1L80.5,487.2L74.8,496.0L62.8,500.8L48.3,503.5L24.4,516.6L24.1,537.6L21.9,537.6L22.1,547.1L13.0,547.6L8.1,551.7L1.5,551.7L-3.8,549.4L-16.2,551.3L-21.4,565.1L-26.0,566.4L-33.5,588.7L-54.5,607.8L-60.1,632.3L-66.4,640.2L-68.3,646.6L-101.9,648.0L-102.1,648.0L-101.2,639.8L-95.4,635.0L-90.2,625.7L-91.0,619.7L-85.5,607.2L-76.9,596.0L-71.8,593.1L-67.6,582.8L-67.0,573.4L-61.3,562.4L-51.3,555.9L-41.4,537.9L-41.2,537.6L-33.6,530.8L-19.9,528.9L-8.1,516.7L-0.6,512.0L11.9,497.2L8.8,475.2L14.7,459.9L16.9,450.6L26.5,438.6L41.0,430.5L51.9,423.2L61.8,404.9L66.5,394.1L77.0,394.1L85.5,401.6L99.1,400.4L113.9,404.3L120.1,404.5Z"/><path class="land" d="M522.8,637.7L524.3,673.1L507.1,673.1L507.2,680.5L446.5,646.7L386.2,612.8L371.5,622.5L361.2,629.1L352.6,619.3L329.0,611.7L322.2,600.6L310.4,592.4L303.5,595.6L298.0,585.8L297.3,578.2L288.3,565.2L294.0,557.8L292.5,546.7L294.2,537.0L292.9,528.9L295.1,514.5L294.2,506.2L289.1,490.6L296.1,486.5L297.1,479.0L295.4,471.7L305.2,464.8L309.5,459.2L316.3,454.1L316.7,440.4L333.9,446.6L339.9,445.0L352.0,448.0L371.5,455.9L378.9,471.7L392.1,475.1L412.9,482.5L428.8,491.3L435.7,486.7L442.2,478.6L438.1,465.0L442.2,456.4L452.1,448.1L462.0,445.7L481.7,449.3L487.1,457.2L492.5,457.3L497.3,460.3L511.8,462.4L515.7,468.2L511.0,476.7L513.8,484.3L510.7,495.3L516.0,509.5L519.6,572.6L522.8,637.7Z"/><path class="land" d="M408.4,272.9L395.7,266.2L390.0,258.9L384.5,255.1L377.7,248.6L374.4,243.2L367.1,235.0L369.6,227.8L374.7,231.8L377.4,228.2L383.8,227.8L395.8,230.7L405.2,230.5L411.7,234.3L416.7,234.3L413.8,241.9L421.0,248.6L419.6,256.8L416.4,257.6L414.0,259.2L409.8,263.3L408.4,272.9Z"/><path class="land" d="M461.8,278.6L469.3,284.2L471.2,295.8L468.6,296.4L466.6,299.5L459.0,299.1L454.0,302.9L444.9,304.5L438.8,300.2L436.3,292.7L437.6,286.7L439.4,286.9L439.8,283.3L447.8,280.6L450.8,279.9L455.5,278.9L461.8,278.6Z"/><path class="land" d="M407.9,216.1L418.0,211.6L426.5,212.4L434.5,219.2L436.5,224.7L445.2,228.8L446.9,235.9L455.4,241.0L459.3,237.1L462.9,239.3L460.0,242.2L462.8,245.2L459.7,249.1L461.5,255.5L468.9,263.0L464.1,268.5L462.3,274.1L463.9,276.1L461.8,278.6L455.5,278.9L450.8,279.9L450.2,278.6L451.7,276.5L452.9,272.3L451.0,272.4L448.0,269.1L445.7,268.3L443.6,265.5L441.0,264.5L438.8,262.0L436.4,263.0L434.9,268.7L431.7,270.0L432.7,268.5L427.2,264.9L422.5,263.0L420.3,260.6L416.4,257.6L419.6,256.8L421.0,248.6L413.8,241.9L416.7,234.3L411.7,234.3L416.5,227.8L411.7,222.9L407.9,216.1Z"/><path class="land" d="M429.4,273.9L425.8,275.5L424.7,272.2L419.3,280.8L420.6,286.4L417.6,285.0L413.3,279.3L407.1,275.8L408.4,272.9L409.8,263.3L414.0,259.2L416.4,257.6L420.3,260.6L422.5,263.0L427.2,264.9L432.7,268.5L431.7,270.0L429.4,273.9Z"/><path class="land" d="M437.6,286.7L436.2,280.4L432.8,278.6L429.4,273.9L431.7,270.0L434.9,268.7L436.4,263.0L438.8,262.0L441.0,264.5L443.6,265.5L445.7,268.3L448.0,269.1L451.0,272.4L452.9,272.3L451.7,276.5L450.2,278.6L450.8,279.9L447.8,280.6L439.8,283.3L439.4,286.9L437.6,286.7Z"/></g><g><path class="arc out" data-k="london" d="M149.8,120.4 Q166.3,130.6 182.7,165.4"/><path class="arc out" data-k="alps" d="M241.4,225.0 Q212.0,176.8 182.7,165.4"/><path class="arc out" data-k="milan" d="M276.8,223.9 Q229.7,170.3 182.7,165.4"/><path class="arc out" data-k="riviera" d="M228.6,262.4 Q205.6,190.3 182.7,165.4"/><path class="arc out" data-k="ibiza" d="M171.3,338.6 Q177.0,213.8 182.7,165.4"/><path class="arc out" data-k="mykonos" d="M510.0,365.1 Q346.3,180.9 182.7,165.4"/><path class="arc out" data-k="marbella" d="M81.7,380.8 Q132.2,220.7 182.7,165.4"/></g><g><g class="pt base" data-k="paris" transform="translate(182.7,165.4)"><circle r="6" fill="#E9C4B8"/><circle r="16" fill="transparent"/><text class="nm" x="10" y="-8" style="font-size:13px" data-en="Paris" data-fr="Paris" data-zh="巴黎">Paris</text></g><g class="pt" data-k="london" transform="translate(149.8,120.4)"><circle r="4" fill="#E9C4B8"/><circle r="16" fill="transparent"/><text class="nm" x="-58" y="-6" style="font-size:13px" data-en="London" data-fr="Londres" data-zh="伦敦">London</text></g><g class="pt" data-k="alps" transform="translate(241.4,225.0)"><circle r="4" fill="#E9C4B8"/><circle r="16" fill="transparent"/><text class="nm" x="-14" y="26" style="font-size:13px" data-en="The Alps" data-fr="Les Alpes" data-zh="阿尔卑斯">The Alps</text></g><g class="pt" data-k="milan" transform="translate(276.8,223.9)"><circle r="4" fill="#E9C4B8"/><circle r="16" fill="transparent"/><text class="nm" x="10" y="0" style="font-size:13px" data-en="Milan" data-fr="Milan" data-zh="米兰">Milan</text></g><g class="pt" data-k="riviera" transform="translate(228.6,262.4)"><circle r="4" fill="#E9C4B8"/><circle r="16" fill="transparent"/><text class="nm" x="10" y="16" style="font-size:13px" data-en="The Riviera" data-fr="La Riviera" data-zh="蔚蓝海岸">The Riviera</text></g><g class="pt" data-k="ibiza" transform="translate(171.3,338.6)"><circle r="4" fill="#E9C4B8"/><circle r="16" fill="transparent"/><text class="nm" x="10" y="4" style="font-size:13px" data-en="Ibiza" data-fr="Ibiza" data-zh="伊维萨">Ibiza</text></g><g class="pt" data-k="mykonos" transform="translate(510.0,365.1)"><circle r="4" fill="#E9C4B8"/><circle r="16" fill="transparent"/><text class="nm" x="-78" y="-10" style="font-size:13px" data-en="Mykonos" data-fr="Mykonos" data-zh="米科诺斯">Mykonos</text></g><g class="pt" data-k="marbella" transform="translate(81.7,380.8)"><circle r="4" fill="#E9C4B8"/><circle r="16" fill="transparent"/><text class="nm" x="-70" y="16" style="font-size:13px" data-en="Marbella" data-fr="Marbella" data-zh="马贝拉">Marbella</text></g></g></svg></div>
+      <div class="nv-info" id="nvinfo" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+<section id="now" class="sec-pale">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow"><span class="n">05</span><span class="t" data-en="Right now" data-fr="En ce moment" data-zh="当季">Right now</span></div>
+      <h2 data-en="What we are working on this season." data-fr="Ce que nous préparons cette saison." data-zh="本季，我们正在筹备的。">What we are working on this season.</h2>
+    </div>
+    <div class="nv-now">
+      <a class="nn reveal" href="saison-ski-2026-2027.html"><picture><source type="image/avif" srcset="img/v2-now-ski.avif"><img src="img/v2-now-ski.webp" alt="" loading="lazy"></picture><div><span data-en="December 2026 to April 2027" data-fr="Décembre 2026 à avril 2027" data-zh="2026年12月至2027年4月">December 2026 to April 2027</span><h3 data-en="The ski season" data-fr="La saison de ski" data-zh="滑雪季">The ski season</h3><p data-en="The good chalets for Christmas are being taken now. Tell us your weeks." data-fr="Les plus beaux chalets pour Noël se réservent dès maintenant. Dites-nous vos semaines." data-zh="圣诞季的好木屋，此刻正被陆续订走。告诉我们您的日期。">The good chalets for Christmas are being taken now. Tell us your weeks.</p><b data-en="The ski season &amp;rarr;" data-fr="La saison de ski &amp;rarr;" data-zh="滑雪季 &amp;rarr;">The ski season &rarr;</b></div></a>
+      <a class="nn reveal" href="formule-1.html"><picture><source type="image/avif" srcset="img/v2-now-gp.avif"><img src="img/v2-now-gp.webp" alt="" loading="lazy"></picture><div><span data-en="Monaco, June 2027" data-fr="Monaco, juin 2027" data-zh="摩纳哥，2027年6月">Monaco, June 2027</span><h3 data-en="The Grand Prix" data-fr="Le Grand Prix" data-zh="摩纳哥大奖赛">The Grand Prix</h3><p data-en="Terraces and boats for the race weekend sell out a season ahead." data-fr="Les terrasses et les bateaux pour le week-end de la course se réservent une saison à l&#x27;avance." data-zh="比赛周末的观赛露台与游艇，提前一季便已售罄。">Terraces and boats for the race weekend sell out a season ahead.</p><b data-en="The Grand Prix weekend &amp;rarr;" data-fr="Le week-end du Grand Prix &amp;rarr;" data-zh="大奖赛周末 &amp;rarr;">The Grand Prix weekend &rarr;</b></div></a>
+    </div>
+  </div>
+</section>
+
+<section id="partners" class="sec-white">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow"><span class="n">06</span><span class="t" data-en="Partners" data-fr="Partenaires" data-zh="合作伙伴">Partners</span></div><h2 data-en="They trust us." data-fr="Ils nous font confiance." data-zh="他们信任我们。">They trust us.</h2></div>
+  </div>
+  <div class="marquee" role="group" aria-label="Partners"><div class="track"><img src="img/partenaires/lux.svg" alt="LUX* Resorts &amp; Hotels" width="552" height="294" style="height:40px;width:auto" decoding="async"><img src="img/partenaires/dorchester.svg" alt="Dorchester Collection" width="160" height="17" style="height:24px;width:auto" decoding="async"><img src="img/partenaires/heritage.png" alt="Heritage Resorts" width="293" height="180" style="height:56px;width:auto" decoding="async"><img src="img/partenaires/luxaviation.svg" alt="Luxaviation" width="1573" height="280" style="height:26px;width:auto" decoding="async"><img src="img/partenaires/p1-travel.svg" alt="P1 Travel" width="363" height="445" style="height:50px;width:auto" decoding="async"><img src="img/partenaires/f1-experiences.png" alt="F1 Experiences" width="446" height="120" style="height:30px;width:auto" decoding="async"><img src="img/partenaires/la-folie-douce.png" alt="La Folie Douce" width="789" height="100" style="height:26px;width:auto" decoding="async"><img src="img/partenaires/lux.svg" alt="" aria-hidden="true" width="552" height="294" style="height:40px;width:auto" decoding="async"><img src="img/partenaires/dorchester.svg" alt="" aria-hidden="true" width="160" height="17" style="height:24px;width:auto" decoding="async"><img src="img/partenaires/heritage.png" alt="" aria-hidden="true" width="293" height="180" style="height:56px;width:auto" decoding="async"><img src="img/partenaires/luxaviation.svg" alt="" aria-hidden="true" width="1573" height="280" style="height:26px;width:auto" decoding="async"><img src="img/partenaires/p1-travel.svg" alt="" aria-hidden="true" width="363" height="445" style="height:50px;width:auto" decoding="async"><img src="img/partenaires/f1-experiences.png" alt="" aria-hidden="true" width="446" height="120" style="height:30px;width:auto" decoding="async"><img src="img/partenaires/la-folie-douce.png" alt="" aria-hidden="true" width="789" height="100" style="height:26px;width:auto" decoding="async"></div></div>
+</section>
+
+
+<section id="contact" class="sec-dark">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow"><span class="n">07</span><span class="t" data-en="Contact" data-fr="Contact" data-zh="联系我们">Contact</span></div>
+      <h2 data-en="Tell us when." data-fr="Dites-nous quand." data-zh="告诉我们，何时启程。">Tell us when.</h2>
+      <p class="lede" data-en="WhatsApp is the fastest way to reach us, at any hour and in any time zone. A first message takes one line." data-fr="WhatsApp est le moyen le plus rapide de nous joindre, à toute heure, où que vous soyez. Une ligne suffit pour commencer." data-zh="WhatsApp是联系我们最快捷的方式，全天候、跨时区响应。第一条消息，一行字即可。">WhatsApp is the fastest way to reach us, at any hour and in any time zone.</p>
+    </div>
+
+    <div class="cgrid reveal">
+      <div class="ci">
+        <span class="lbl">WhatsApp</span>
+        <a class="num" href="https://wa.me/33613850733">+33 (0)6 13 85 07 33</a>
+      </div>
+      <div class="ci">
+        <span class="lbl" data-en="Direct line" data-fr="Ligne directe" data-zh="直线电话">Direct line</span>
+        <a class="num" href="tel:+33649668833">+33 (0)6 49 66 88 33</a>
+      </div>
+      <div class="ci">
+        <span class="lbl" data-en="Email" data-fr="E-mail" data-zh="邮箱">Email</span>
+        <a href="#" data-u="contact" data-d="unseenconciergerie.com">contact&#64;unseenconciergerie.com</a>
+      </div>
+      <div class="ci">
+        <span class="lbl">Instagram</span>
+        <a href="https://instagram.com/unseen.conciergerie">@unseen.conciergerie</a>
+      </div>
+    </div>
+
+    <div class="cta-row" style="margin-top:52px">
+      <a class="btn btn-accent" href="https://wa.me/33613850733" data-en="Start a conversation" data-fr="Écrire sur WhatsApp" data-zh="开始对话">Start a conversation</a>
+    </div>
+
+    <div class="enq-head reveal">
+      <span class="tag" data-en="Or write to us" data-fr="Ou écrivez-nous" data-zh="或直接给我们留言">Or write to us</span>
+      <h3 data-en="Tell us what you are looking for." data-fr="Dites-nous ce que vous cherchez." data-zh="告诉我们，您在寻找什么。">Tell us what you are looking for.</h3>
+      <p data-en="Every request is handled personally. We reply within 24 hours with what is possible and what it costs." data-fr="Chaque demande est traitée personnellement. Réponse sous 24 heures : ce qui est possible, et à quel prix." data-zh="每一项需求都由专人亲自处理。我们将在24小时内回复可行方案及相关费用。">Every request is handled personally.</p>
+    </div>
+
+    <form class="enq" id="enq" novalidate>
+
+      <div class="frow">
+        <div class="fld" id="f-name">
+          <label for="q-name" data-en="Full name" data-fr="Nom complet" data-zh="姓名">Full name</label>
+          <input type="text" id="q-name" autocomplete="name">
+          <div class="msg" data-en="Please enter your name." data-fr="Merci d'indiquer votre nom." data-zh="请填写您的姓名。">Please enter your name.</div>
+        </div>
+        <div class="fld" id="f-email">
+          <label for="q-email" data-en="Email" data-fr="E-mail" data-zh="邮箱">Email</label>
+          <input type="email" id="q-email" autocomplete="email">
+          <div class="msg" data-en="Please enter a valid email address." data-fr="Merci d'indiquer une adresse e-mail valide." data-zh="请填写有效的邮箱地址。">Please enter a valid email address.</div>
+        </div>
+      </div>
+
+      <div class="fld" id="f-message">
+        <label for="q-message" data-en="What would you like arranged?" data-fr="Que souhaitez-vous organiser ?" data-zh="您希望我们为您安排什么？">What would you like arranged?</label>
+        <textarea id="q-message"></textarea>
+        <div class="msg" data-en="Please tell us a little about your request." data-fr="Merci de préciser votre demande." data-zh="请简要说明您的需求。">Please tell us a little about your request.</div>
+      </div>
+
+      <details class="more" id="more">
+        <summary><span data-en="Add details" data-fr="Ajouter des précisions" data-zh="补充更多信息">Add details</span> <em data-en="— optional" data-fr="— facultatif" data-zh="— 选填">— optional</em></summary>
+        <div class="frow">
+      <div class="fld sel" id="f-interest">
+        <label for="q-interest" data-en="What are you interested in" data-fr="Ce qui vous intéresse" data-zh="您感兴趣的服务">What are you interested in</label>
+        <select id="q-interest">
+          <option value="" data-en="Select a category" data-fr="Choisir une catégorie" data-zh="请选择类别">Select a category</option>
+          <optgroup label="What you're looking for" data-en-label="What you're looking for" data-fr-label="Ce que vous recherchez" data-zh-label="您在寻找什么">
+            <option value="Palaces and suites" data-en="Palaces and suites" data-fr="Palaces et suites" data-zh="宫殿级酒店与套房">Palaces and suites</option>
+            <option value="Dining and private tables" data-en="Dining and private tables" data-fr="Tables et adresses privées" data-zh="餐饮与私人餐桌">Dining and private tables</option>
+            <option value="Events and exclusive access" data-en="Events and exclusive access" data-fr="Événements et accès exclusifs" data-zh="活动与专属通行">Events and exclusive access</option>
+            <option value="Personal shopping and maisons" data-en="Personal shopping and maisons" data-fr="Shopping et maisons de luxe" data-zh="私人购物与奢侈品牌">Personal shopping and maisons</option>
+            <option value="Private transport and aviation" data-en="Private transport and aviation" data-fr="Transport privé et aviation" data-zh="私人用车与航空">Private transport and aviation</option>
+            <option value="Evenings and private clubs" data-en="Evenings and private clubs" data-fr="Soirées et clubs privés" data-zh="夜晚与私人会所">Evenings and private clubs</option>
+            <option value="Villas and yachts" data-en="Villas and yachts" data-fr="Villas et yachts" data-zh="别墅与游艇">Villas and yachts</option>
+            <option value="Athletes and entourage" data-en="Athletes and entourage" data-fr="Sportifs et entourage" data-zh="运动员与随行团队">Athletes and entourage</option>
+          </optgroup>
+          <optgroup label="Season or destination" data-en-label="Season or destination" data-fr-label="Saison ou destination" data-zh-label="季节或目的地">
+            <option value="Ski season in the Alps" data-en="Ski season in the Alps" data-fr="Saison de ski dans les Alpes" data-zh="阿尔卑斯滑雪季">Ski season in the Alps</option>
+            <option value="The Riviera and Saint-Tropez" data-en="The Riviera and Saint-Tropez" data-fr="La Riviera et Saint-Tropez" data-zh="蔚蓝海岸与圣特罗佩">The Riviera and Saint-Tropez</option>
+            <option value="Mauritius and the Indian Ocean" data-en="Mauritius and the Indian Ocean" data-fr="Maurice et océan Indien" data-zh="毛里求斯与印度洋">Mauritius and the Indian Ocean</option>
+            <option value="Formula 1 Grand Prix" data-en="Formula 1 Grand Prix" data-fr="Grand Prix de Formule 1" data-zh="F1大奖赛">Formula 1 Grand Prix</option>
+            <option value="Fashion Week" data-en="Fashion Week" data-fr="Fashion Week" data-zh="时装周">Fashion Week</option>
+          </optgroup>
+          <optgroup label="Other" data-en-label="Other" data-fr-label="Autre" data-zh-label="其他">
+            <option value="Annual membership" data-en="Annual membership" data-fr="Abonnement annuel" data-zh="年度会员">Annual membership</option>
+            <option value="Partnership or press" data-en="Partnership or press" data-fr="Partenariat ou presse" data-zh="合作或媒体咨询">Partnership or press</option>
+            <option value="Something else" data-en="Something else" data-fr="Autre demande" data-zh="其他需求">Something else</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="fld" id="f-dates">
+        <label for="q-dates"><span data-en="Approximate dates" data-fr="Dates approximatives" data-zh="大致日期">Approximate dates</span> <em data-en="— e.g. late October" data-fr="— ex. fin octobre" data-zh="— 例如：十月下旬">— e.g. late October</em></label>
+        <input type="text" id="q-dates">
+      </div>
+        </div>
+      </details>
+
+      <input type="checkbox" name="botcheck" id="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Leave empty">
+
+      <div class="agree">
+        <input type="checkbox" id="q-agree" aria-labelledby="q-agree-txt">
+        <span id="q-agree-txt" data-en='I agree that UNSEEN. may use these details to reply to me, as set out in the <a href="legal.html">privacy policy</a>.' data-fr='J&apos;accepte qu&apos;UNSEEN. utilise ces informations pour me répondre, selon la <a href="legal.html">politique de confidentialité</a>.' data-zh='本人同意UNSEEN.按照<a href="legal.html">隐私政策</a>使用以上信息回复本人。'>I agree that UNSEEN. may use these details to reply to me, as set out in the <a href="legal.html">privacy policy</a>.</span>
+      </div>
+      <div class="agree-msg" id="agree-msg" data-en="Please tick the box so we may reply to you." data-fr="Merci de cocher la case pour que nous puissions vous répondre." data-zh="请勾选此项，以便我们回复您。">Please tick the box so we may reply to you.</div>
+
+      <div class="enq-actions">
+        <button class="btn" type="submit" data-en="Send request" data-fr="Envoyer la demande" data-zh="提交需求">Send request</button>
+        <span class="enq-alt" data-en='Prefer WhatsApp? <a id="enq-wa" href="#">Send it there instead</a>' data-fr='Vous préférez WhatsApp ? <a id="enq-wa" href="#">Envoyer par ce canal</a>' data-zh='更习惯用WhatsApp？<a id="enq-wa" href="#">点击这里发送</a>'>Prefer WhatsApp? <a id="enq-wa" href="#">Send it there instead</a></span>
+      </div>
+
+      <p class="enq-note" data-en="Rates and availability quoted before confirmation are indicative, subject to supplier confirmation, and are not binding until confirmed in writing." data-fr="Les tarifs et disponibilités communiqués avant confirmation sont indicatifs, sous réserve de confirmation du prestataire, et n'engagent qu'après confirmation écrite." data-zh="确认前提供的价格与可订情况仅供参考，须经供应商最终确认，在书面确认前不构成任何承诺。">Answered within 24 hours.</p>
+    </form>
+
+    <div class="enq-done" id="enq-done">
+      <h3 data-en="Thank you." data-fr="Merci." data-zh="感谢您的联系。">Thank you.</h3>
+      <p data-en="Your request is on its way. We come back to you within 24 hours." data-fr="Votre demande nous est bien parvenue. Nous revenons vers vous sous 24 heures." data-zh="您的需求已发送，我们将在24小时内与您联系。">Your request is on its way.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-mark">UNSEEN.</div>
+    <div class="curated">Curated by UNSEEN.</div>
+
+    <hr class="foot-sep">
+
+    <div class="foot-legal">
+      <div><strong>UNSEEN.</strong> <span data-en="Conciergerie de luxe. Sole trader registered in France." data-fr="Conciergerie de luxe. Entreprise individuelle immatriculée en France." data-zh="私人奢华礼宾服务。法国注册个体企业。">Conciergerie de luxe. Sole trader registered in France.</span></div>
+      <div>SIREN <span class="num">999 356 587</span> &nbsp; SIRET <span class="num">999 356 587 00017</span> &nbsp; APE <span class="num">96.09Z</span></div>
+      <div style="margin-top:16px">
+        <a href="legal.html" data-en="Legal notice, terms and privacy" data-fr="Mentions légales, conditions et confidentialité" data-zh="法律声明、条款与隐私政策">Legal notice, terms and privacy</a>
+        &nbsp;&nbsp;
+        <a href="#" data-u="privacy" data-d="unseenconciergerie.com">privacy&#64;unseenconciergerie.com</a>
+      </div>
+      <div style="margin-top:16px;color:#A0A0A0">&copy; <span class="num">2026</span> UNSEEN. <span data-en="All rights reserved." data-fr="Tous droits réservés." data-zh="版权所有。">All rights reserved.</span></div>
+    </div>
+  </div>
+</footer>
+<a class="wa" href="https://wa.me/33613850733" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.1 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a>
+
+
+<script>
+(function(){
+  var nodes = document.querySelectorAll('[data-en]');
+  var boutons = {
+    en: document.getElementById('btn-en'),
+    fr: document.getElementById('btn-fr'),
+    zh: document.getElementById('btn-zh')
+  };
+  /* Le titre de l'onglet du navigateur suit aussi la langue choisie.
+     Cela n'affecte que ce que le visiteur voit une fois la page ouverte :
+     un moteur de recherche ou un aperçu de partage continue de lire le
+     titre anglais par défaut, un site statique ne peut pas faire mieux. */
+  var TITRES = {
+    en: 'UNSEEN. — Private Luxury Concierge',
+    fr: 'UNSEEN. — Conciergerie privée de luxe',
+    zh: 'UNSEEN. — 私人尊享礼宾服务'
+  };
+
+  function setLang(lang){
+    for (var i=0;i<nodes.length;i++){
+      var v = nodes[i].getAttribute('data-'+lang);
+      if (v !== null) nodes[i].innerHTML = v;
+    }
+    var phs = document.querySelectorAll('[data-ph-en]');
+    for (var j=0;j<phs.length;j++){
+      var p = phs[j].getAttribute('data-ph-'+lang);
+      if (p !== null) phs[j].setAttribute('placeholder', p);
+    }
+    /* descriptions des photos : invisibles a l'ecran, mais lues par Google */
+    var alts = document.querySelectorAll('[data-alt-en]');
+    for (var a=0;a<alts.length;a++){
+      var av = alts[a].getAttribute('data-alt-'+lang);
+      if (av !== null) alts[a].setAttribute('alt', av);
+    }
+    var grp = document.querySelectorAll('optgroup[data-en-label]');
+    for (var g=0;g<grp.length;g++){
+      var gv = grp[g].getAttribute('data-'+lang+'-label');
+      if (gv !== null) grp[g].setAttribute('label', gv);
+    }
+    document.documentElement.lang = lang;
+    if (TITRES[lang]) document.title = TITRES[lang];
+    for (var code in boutons){
+      if (boutons[code]) boutons[code].setAttribute('aria-pressed', code===lang ? 'true':'false');
+    }
+    try { localStorage.setItem('unseen-lang', lang); } catch(e){}
+  }
+
+  for (var code in boutons){
+    (function(code){
+      if (boutons[code]) boutons[code].addEventListener('click', function(){ setLang(code); });
+    })(code);
+  }
+
+  var saved=null; try { saved = localStorage.getItem('unseen-lang'); } catch(e){}
+  var naviguateurLangue = (navigator.language || '').toLowerCase();
+  if (saved === 'fr' || saved === 'zh') setLang(saved);
+  else if (!saved && naviguateurLangue.indexOf('zh') === 0) setLang('zh');
+  else if (!saved && naviguateurLangue.indexOf('fr') === 0) setLang('fr');
+})();
+</script>
+
+
+
+<script>
+/* =============================================================
+   UNSEEN. — FORMULAIRE DE DEMANDE
+   -------------------------------------------------------------
+   La demande part directement dans la boite contact@ : le
+   visiteur n'a rien d'autre a faire apres avoir clique.
+
+   Service : Web3Forms, plan gratuit, 250 envois par mois.
+   Compte rattache a contact\u0040unseenconciergerie.com.
+   Tableau de bord : app.web3forms.com
+
+   Si le service ne repond pas dans les 12 secondes, le
+   formulaire bascule automatiquement sur le client mail du
+   visiteur : il n'est jamais bloque.
+
+   Pour changer la boite de reception, ne pas modifier ce
+   fichier : le faire depuis le tableau de bord Web3Forms.
+   ============================================================= */
+(function(){
+
+  var ACCESS_KEY = 'b9512ba6-7862-4d98-a59e-c5498be14c49';   /* cle Web3Forms — publique par conception */
+
+  var EMAIL = 'contact\u0040unseenconciergerie.com';
+  var WA    = '33613850733';
+
+  var form = document.getElementById('enq');
+  if(!form) return;
+  var done   = document.getElementById('enq-done');
+  var agreeM = document.getElementById('agree-msg');
+  var submit = form.querySelector('button[type=submit]');
+
+  function txt(node){ var e=document.getElementById(node); return e ? e.value.trim() : ''; }
+  function flag(id,on){ document.getElementById(id).classList.toggle('bad', !!on); }
+  function lang(){
+    var l = document.documentElement.lang;
+    return (l === 'fr' || l === 'zh') ? l : 'en';
+  }
+
+  var WORD = {
+    send:    {en:'Send request',    fr:'Envoyer la demande',   zh:'提交需求'},
+    sending: {en:'Sending…',        fr:'Envoi en cours…',      zh:'提交中…'}
+  };
+
+  function valid(){
+    var good = true;
+    var mailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(txt('q-email'));
+    var checks = [
+      ['f-name',     !txt('q-name')],
+      ['f-email',    !mailOk],
+      ['f-message',  txt('q-message').length < 5]
+    ];
+    for (var i=0;i<checks.length;i++){
+      if (checks[i][1]) good = false;
+      flag(checks[i][0], checks[i][1]);
+    }
+    var agreed = document.getElementById('q-agree').checked;
+    agreeM.classList.toggle('on', !agreed);
+    if (!agreed) good = false;
+    if (!good){
+      var f = form.querySelector('.fld.bad') || agreeM;
+      if (f && f.scrollIntoView) f.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    return good;
+  }
+
+  function subject(){
+    return 'Nouvelle demande — ' + txt('q-name') + (txt('q-interest') ? ' — ' + txt('q-interest') : '');
+  }
+
+  function plain(){
+    var L = [];
+    L.push('Nom : ' + txt('q-name'));
+    L.push('E-mail : ' + txt('q-email'));
+    if (txt('q-interest')) L.push('Demande : ' + txt('q-interest'));
+    if (txt('q-dates'))  L.push('Dates : ' + txt('q-dates'));
+    L.push('');
+    L.push('Message :');
+    L.push(txt('q-message'));
+    return L.join('\n');
+  }
+
+  function finish(){
+    form.style.display = 'none';
+    done.style.display = 'block';
+    if (done.scrollIntoView) done.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  function busy(on){
+    submit.disabled = on;
+    submit.style.opacity = on ? '.6' : '';
+    submit.textContent = on ? WORD.sending[lang()] : WORD.send[lang()];
+  }
+
+  /* repli : ouvre le client mail du visiteur si l'envoi direct echoue */
+  function fallback(){
+    window.location.href = 'mailto:' + EMAIL +
+      '?subject=' + encodeURIComponent(subject()) +
+      '&body=' + encodeURIComponent(plain());
+    finish();
+  }
+
+  function post(){
+    busy(true);
+    var payload = {
+      access_key: ACCESS_KEY,
+      subject: subject(),
+      from_name: 'UNSEEN. — formulaire du site',
+      replyto: txt('q-email'),
+      botcheck: document.getElementById('botcheck').checked,
+      'Nom': txt('q-name'),
+      'E-mail': txt('q-email'),
+      'Demande': txt('q-interest') || '—',
+      'Dates': txt('q-dates') || '—',
+      'Message': txt('q-message')
+    };
+    var timeout = setTimeout(function(){ busy(false); fallback(); }, 12000);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json', 'Accept':'application/json'},
+      body: JSON.stringify(payload)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(j){
+      clearTimeout(timeout);
+      busy(false);
+      if (j && j.success) finish();
+      else fallback();
+    })
+    .catch(function(){
+      clearTimeout(timeout);
+      busy(false);
+      fallback();
+    });
+  }
+
+  /* étiquettes qui montent quand le champ est rempli (remplissage automatique du navigateur compris) */
+  function sync(){
+    var champs = form.querySelectorAll('.fld');
+    for (var i=0;i<champs.length;i++){
+      var c = champs[i].querySelector('input,textarea');
+      if (c) champs[i].classList.toggle('has', !!c.value);
+    }
+  }
+  form.addEventListener('input', sync);
+  form.addEventListener('change', sync);
+  form.addEventListener('focusout', sync);
+  sync(); setTimeout(sync, 400); setTimeout(sync, 1500);
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!valid()) return;
+    if (ACCESS_KEY) post();
+    else fallback();
+  });
+
+  form.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('#enq-wa') : null;
+    if (!a) return;
+    e.preventDefault();
+    if (!valid()) return;
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(plain()), '_blank', 'noopener');
+    finish();
+  });
+
+})();
+</script>
+
+<script>
+/* ---------- navigation mobile ---------- */
+(function(){
+  var t = document.getElementById('navtoggle');
+  var p = document.getElementById('navpanel');
+  if (!t || !p) return;
+
+  function open(){
+    p.classList.add('on');
+    t.setAttribute('aria-expanded','true');
+    p.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function shut(){
+    p.classList.remove('on');
+    t.setAttribute('aria-expanded','false');
+    p.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  t.addEventListener('click', function(){
+    p.classList.contains('on') ? shut() : open();
+  });
+  p.addEventListener('click', function(e){
+    if (e.target.tagName === 'A') shut();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') shut();
+  });
+  window.addEventListener('resize', function(){
+    if (window.innerWidth > 900) shut();
+  });
+})();
+</script>
+
+
+<script>
+/* ---------- bulle WhatsApp : cachée sur l'ouverture et sur le bloc Contact (ils ont déjà leur bouton) ---------- */
+(function(){
+  var wa = document.querySelector('.wa');
+  if (!wa || !('IntersectionObserver' in window)) return;
+  var vus = {};
+  function maj(){ wa.classList.toggle('wa-cache', !!(vus.top || vus.contact)); }
+  ['top','contact'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (!el) return;
+    new IntersectionObserver(function(e){ vus[id] = e[0].isIntersecting; maj(); }).observe(el);
+  });
+})();
+</script>
+<script src="anim.js"></script>
+<script>
+// Services : l'image change au survol (ou au toucher)
+(()=>{const lis=document.querySelectorAll('#nvsvc li'),ims=document.querySelectorAll('#nvimg img');
+const go=li=>{lis.forEach(x=>x.classList.remove('on'));li.classList.add('on');ims.forEach((im,i)=>im.classList.toggle('on',i==li.dataset.i))};
+lis.forEach(li=>{li.addEventListener('mouseenter',()=>go(li));li.addEventListener('click',()=>go(li))})})();
+// Carte de l'Europe (dessinée dans la page par outils/carte_europe.py) : la fiche suit le point choisi
+(()=>{
+ const P={
+  paris:{n:["Paris","Paris","巴黎"],t:["The base","Notre base","大本营"],d:["Dinner at the Plaza Athénée, a private appointment on the Faubourg, the front row at Fashion Week.","Un dîner au Plaza Athénée, un rendez-vous privé rue du Faubourg-Saint-Honoré, le premier rang à la Fashion Week.","在雅典娜广场酒店晚餐，在圣奥诺雷街名店私享预约，坐上时装周的头排。"]},
+  london:{n:["London","Londres","伦敦"],t:["An idea","Une idée","灵感"],d:["A late night at Tape, Sunday lunch in the countryside, Wimbledon in July.","Une fin de soirée au Tape, un déjeuner du dimanche à la campagne, Wimbledon en juillet.","在Tape畅玩至深夜，周日去乡间午餐，七月的温布尔登。"],k:"out"},
+  alps:{n:["The Alps","Les Alpes","阿尔卑斯"],t:["An idea","Une idée","灵感"],d:["Lunch on the terrace at La Folie Douce, a staffed chalet in Courchevel 1850, a helicopter drop for fresh snow.","Un déjeuner en terrasse à La Folie Douce, un chalet avec personnel à Courchevel 1850, une dépose en hélicoptère sur la neige fraîche.","在La Folie Douce露台午餐，入住库舍维尔1850配备管家的木屋，乘直升机直达新雪坡。"],k:"out"},
+  milan:{n:["Milan","Milan","米兰"],t:["An idea","Une idée","灵感"],d:["Fashion Week, a fitting in the Quadrilatero, an evening on Lake Como.","La Fashion Week, un essayage dans le Quadrilatero, une soirée au bord du lac de Côme.","米兰时装周，在四方区私享试衣，傍晚去科莫湖畔。"],k:"out"},
+  riviera:{n:["The Riviera","La Riviera","蔚蓝海岸"],t:["An idea","Une idée","灵感"],d:["The Monaco Grand Prix from a terrace, lunch at Club 55, a day on a yacht off Saint-Tropez.","Le Grand Prix de Monaco depuis une terrasse, un déjeuner au Club 55, une journée en yacht au large de Saint-Tropez.","在露台观赏摩纳哥大奖赛，于Club 55午餐，在圣特罗佩外海度过游艇一日。"],k:"out"},
+  ibiza:{n:["Ibiza","Ibiza","伊维萨"],t:["An idea","Une idée","灵感"],d:["Dinner on Formentera, a sunset table at Beso Beach, a villa above the cliffs.","Un dîner à Formentera, une table au coucher du soleil au Beso Beach, une villa au-dessus des falaises.","去福门特拉岛晚餐，在Beso Beach看日落，入住悬崖上的别墅。"],k:"out"},
+  mykonos:{n:["Mykonos","Mykonos","米科诺斯"],t:["An idea","Une idée","灵感"],d:["A party at Scorpios, a boat to Delos, a villa above the bay.","Une soirée au Scorpios, un bateau jusqu'à Délos, une villa au-dessus de la baie.","在Scorpios狂欢，乘船前往提洛岛，入住俯瞰海湾的别墅。"],k:"out"},
+  marbella:{n:["Marbella","Marbella","马贝拉"],t:["An idea","Une idée","灵感"],d:["A long lunch at Puente Romano, Nikki Beach in the afternoon, a villa above the golf courses.","Un long déjeuner au Puente Romano, Nikki Beach l'après-midi, une villa au-dessus des golfs.","在Puente Romano悠长午餐，午后去Nikki Beach，入住俯瞰高尔夫球场的别墅。"],k:"out"}};
+ const info=document.getElementById('nvinfo');
+ const L=()=>({en:0,fr:1,zh:2}[document.documentElement.lang]||0);
+ const show=k=>{const v=P[k],l=L();info.innerHTML=`<span class="t">${v.t[l]}</span><h3>${v.n[l]}</h3><p>${v.d[l]}</p>`;info.dataset.k=k;
+   document.querySelectorAll('#europe .arc').forEach(a=>a.classList.toggle('hi',a.dataset.k===k))};
+ document.querySelectorAll('#europe .pt').forEach(g=>{const k=g.dataset.k;g.addEventListener('mouseenter',()=>show(k));g.addEventListener('click',()=>show(k))});
+ show('paris');
+ new MutationObserver(()=>show(info.dataset.k||'paris')).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+})();
+</script>
+<script>/* Adresses e-mail reconstituées à l'ouverture (protection contre les robots) */document.querySelectorAll('a[data-u]').forEach(function(a){a.href='mailto:'+a.dataset.u+'\u0040'+a.dataset.d+(a.dataset.q||'');});</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e276d22355ad4ef6a0ed2be285d84a83"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
