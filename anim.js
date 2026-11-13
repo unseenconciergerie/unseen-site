@@ -83,12 +83,15 @@
       avif.type = 'image/avif';
       avif.srcset = 'img/' + nom + '.avif';
       var img = document.createElement('img');
-      img.src = 'img/' + nom + '.webp';
       img.alt = '';
       img.loading = 'lazy';
       img.decoding = 'async';
       bloc.appendChild(avif);
       bloc.appendChild(img);
+      /* L'adresse de l'image est donnée APRÈS l'avoir rangée dans <picture> :
+         sinon le navigateur télécharge tout de suite le .webp (plus lourd)
+         au lieu de choisir le .avif. */
+      img.src = 'img/' + nom + '.webp';
       cadre.appendChild(bloc);
     });
 
