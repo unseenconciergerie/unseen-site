@@ -94,26 +94,111 @@ footer .num{color:#D2D2D2}
 </style>
 <link rel="stylesheet" href="season.css">
 <link rel="stylesheet" href="anim.css">
-</head>
-<body>
+<style>
+/* barre du haut et pied de page de la version C, sans toucher à la mise en page de la page */
+:root{--barre:74px}
+.bar,.volet,footer,.maq{--max:1280px;--pad:48px;--blanc:#FFF;--noir:#000;--trait:#E5D7D0;--t3:#6E6366;--nuit:#1E1D20}
+@media(max-width:900px){:root{--barre:64px}.bar,.volet,footer{--pad:22px}}
+.bar a,.volet a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.bar{position:fixed;top:0;left:0;right:0;z-index:50;color:var(--blanc);transition:background .3s,color .3s,box-shadow .3s}
+.bar-in{max-width:var(--max);margin:0 auto;height:var(--barre);padding:0 var(--pad);display:flex;align-items:center;gap:40px}
+.bar .mark{font-size:25px;text-decoration:none}
+.bar nav{display:flex;gap:32px;margin:0 auto}
+.bar a.l{font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;text-decoration:none;font-weight:500;padding:6px 0;border-bottom:1px solid transparent;transition:border-color .2s,opacity .2s}
+.bar a.l:hover{border-bottom-color:var(--accent)}
+.bar .cote{display:flex;align-items:center;gap:22px}
+.bar .cote a.l{opacity:.8}.bar .cote a.l:hover{opacity:1}
+.langs{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;padding-left:22px;border-left:1px solid rgba(255,255,255,.3)}
+.langs span{opacity:.4;font-weight:400}
+.langs button{background:none;border:0;cursor:pointer;padding:6px 2px;opacity:.6}
+.langs button[aria-pressed="true"]{opacity:1}
+.bar.solide,.menu-ouvert .bar{background:rgba(255,255,255,.97);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--noir);box-shadow:0 1px 0 rgba(0,0,0,.07)}
+.bar.solide .langs,.menu-ouvert .bar .langs{border-left-color:rgba(0,0,0,.18)}
+.burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative;margin-right:-10px}
+.burger span{position:absolute;left:11px;right:11px;height:1.5px;background:currentColor;transition:transform .25s,opacity .25s}
+.burger span:nth-child(1){top:16px}.burger span:nth-child(2){top:22px}.burger span:nth-child(3){top:28px}
+.menu-ouvert .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-ouvert .burger span:nth-child(2){opacity:0}
+.menu-ouvert .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.volet{position:fixed;inset:var(--barre) 0 0 0;z-index:49;background:var(--blanc);padding:26px var(--pad) calc(28px + env(safe-area-inset-bottom));display:flex;flex-direction:column;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .25s,transform .25s;overflow-y:auto}
+.menu-ouvert .volet{opacity:1;pointer-events:auto;transform:none}
+.volet a.g{font-family:'League Spartan',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.02em;text-decoration:none;padding:13px 0;border-bottom:1px solid var(--trait)}
+.volet .q{margin-top:26px;font-size:14px;color:var(--t3)}
+.volet a.p{font-weight:600;font-size:17px;text-decoration:none;padding:6px 0 0}
+.volet a.p:after{content:" \2192"}
+.volet .bas{margin-top:auto;padding-top:28px;display:flex;flex-direction:column;gap:12px}
+.volet .bas a{font-weight:500;font-size:16px;text-decoration:none}
+footer{background:var(--nuit);color:#A39C9E;padding:88px 0 calc(38px + env(safe-area-inset-bottom));font-size:14.5px}
+.pied{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr 1.35fr;gap:40px}
+.pied .mark{color:var(--blanc);font-size:46px}
+.pied .curated{margin-top:14px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase}
+.pied h4{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--blanc);margin-bottom:16px}
+.pied a{display:block;text-decoration:none;color:#C9C3C5;padding:5px 0}
+.pied a:hover{color:var(--blanc)}
+.legal{margin-top:70px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:14px 48px;flex-wrap:wrap;font-size:13px;line-height:1.85}
+.legal a{color:#C9C3C5}
+.legal strong{color:var(--blanc)}
+@media(max-width:900px){
+.bar nav,.bar .cote a.l{display:none}
+.bar-in{gap:14px}
+.bar .cote{margin-left:auto}
+.langs{border-left:0;padding-left:0}
+.burger{display:block}
+footer{padding-top:64px}
+.pied{grid-template-columns:1fr 1fr;gap:34px 24px}
+.pied>div:first-child,.pied>div:last-child{grid-column:1/-1}
+.legal{margin-top:44px;flex-direction:column}
+}
+.bar .mark,.pied .mark{font-family:'League Spartan',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.04;color:inherit}
+.bar a.l.ici{opacity:1;border-bottom-color:var(--accent)}
+.bar button,.volet button{font:inherit;color:inherit}
+footer{line-height:1.65;border:0;text-align:left}
+footer .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+footer a{border:0}
+.maq{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:60;background:#000;color:#fff;font-size:12px;line-height:1.3;padding:9px 14px;border-radius:999px;display:flex;gap:10px;align-items:center;box-shadow:0 6px 18px rgba(0,0,0,.25);font-family:'DM Sans',sans-serif}
+.maq a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;border:0}
+.maq span{opacity:.7;white-space:nowrap}
+@media(max-width:520px){.maq span{display:none}}
+/* page sans photo d'ouverture : la barre est blanche dès le départ */
+.sans-photo .bar{background:rgba(255,255,255,.97);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#000;box-shadow:0 1px 0 rgba(0,0,0,.07)}
+.sans-photo .bar .langs{border-left-color:rgba(0,0,0,.18)}
+.sans-photo{padding-top:var(--barre)}
+</style><style>
+/* pied de page : moyens de contact avec leur libellé, et pastilles des réseaux */
+.pied .joindre p{display:grid;grid-template-columns:92px minmax(0,1fr);gap:10px;align-items:baseline;padding:5px 0}
+.pied .joindre p span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8E8588}
+.pied .joindre p a{padding:0;overflow-wrap:anywhere}
+.reseaux{display:flex;gap:10px;margin-top:26px}
+.pied .reseaux a{width:42px;height:42px;padding:0;border:1px solid rgba(255,255,255,.24);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;transition:background .2s,border-color .2s,color .2s}
+.pied .reseaux a:hover{background:var(--accent);border-color:var(--accent);color:#000}
+.reseaux svg{width:18px;height:18px}
+@media(min-width:901px){.pied{grid-template-columns:1.35fr .85fr .85fr .85fr 2fr}.pied .joindre p a{white-space:nowrap}}
+/* petit bandeau de maquette (absent du site publié) */
+.maq{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:60;background:#000;color:#fff;font-size:12px;line-height:1.3;padding:9px 14px;border-radius:999px;display:flex;gap:10px;align-items:center;box-shadow:0 6px 18px rgba(0,0,0,.25);font-family:'DM Sans',sans-serif}
+.maq a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;border:0}
+.maq a.ici{text-decoration:none;color:var(--accent)}
+.maq span{opacity:.7;white-space:nowrap}
+@media(max-width:520px){.maq span{display:none}}
+/* grilles toujours régulières : six éléments = trois par ligne */
+.svc.six{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){section:not(.sable):not(.sombre) .seasons a{background:var(--sable)}}
+</style></head>
+<body class="sans-photo">
 
-<div class="topbar">
-  <div class="topbar-in">
-    <a class="mark" href="index.html">UNSEEN.</a>
-    <div class="langsw">
-      <button type="button" id="btn-en" aria-pressed="true">EN</button>
-      <span>/</span>
-      <button type="button" id="btn-fr" aria-pressed="false">FR</button>
-    </div>
-    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="panel"><span></span><span></span><span></span></button>
-  </div>
-</div>
-<nav class="panel" id="panel" aria-hidden="true">
-  <a href="index.html#services" data-en="Services" data-fr="Services">Services</a><a href="index.html#destinations" data-en="Destinations" data-fr="Destinations">Destinations</a><a href="index.html#now" data-en="Seasons" data-fr="Saisons">Seasons</a><a href="index.html#contact" data-en="Contact" data-fr="Contact">Contact</a>
-      <span class="pro-q" data-en="Travel professional?" data-fr="Vous êtes professionnel du voyage ?" data-zh="您是旅游业专业人士？">Travel professional?</span>
-      <a href="professionals.html" class="pro" data-en="Professionals" data-fr="Professionnels">Professionals</a>
+<header class="bar" id="bar"><div class="bar-in">
+  <a class="mark" href="index.html">UNSEEN.</a>
+  <nav><a class="l" href="index.html#services" data-en="Services" data-fr="Services" data-zh="服务">Services</a><a class="l" href="index.html#destinations" data-en="Destinations" data-fr="Destinations" data-zh="目的地">Destinations</a><a class="l" href="index.html#now" data-en="Seasons" data-fr="Saisons" data-zh="当季">Seasons</a><a class="l" href="index.html#contact" data-en="Contact" data-fr="Contact" data-zh="联系我们">Contact</a></nav>
+  <div class="cote"><a class="l" href="professionals.html" data-en="Professionals" data-fr="Professionnels" data-zh="专业合作">Professionals</a><a class="l" href="companies.html" data-en="Companies" data-fr="Entreprises" data-zh="企业">Companies</a><div class="langs"><button type="button" id="btn-en" data-l="en" aria-pressed="true">EN</button><span>/</span><button type="button" id="btn-fr" data-l="fr" aria-pressed="false">FR</button></div></div>
+  <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="volet"><span></span><span></span><span></span></button>
+</div></header>
+<nav class="volet" id="volet" aria-hidden="true">
+  <a class="g" href="index.html#services" data-en="Services" data-fr="Services" data-zh="服务">Services</a><a class="g" href="index.html#destinations" data-en="Destinations" data-fr="Destinations" data-zh="目的地">Destinations</a><a class="g" href="index.html#now" data-en="Seasons" data-fr="Saisons" data-zh="当季">Seasons</a><a class="g" href="index.html#contact" data-en="Contact" data-fr="Contact" data-zh="联系我们">Contact</a>
+  <span class="q" data-en="Travel professional?" data-fr="Vous êtes professionnel du voyage ?" data-zh="您是旅游业专业人士？">Travel professional?</span><a class="p" href="professionals.html" data-en="Professionals" data-fr="Professionnels" data-zh="专业合作">Professionals</a><a class="p" href="companies.html" data-en="Companies" data-fr="Entreprises" data-zh="企业">Companies</a>
   <div class="bas"><a href="https://wa.me/33613850733">WhatsApp</a><a href="#" data-u="contact" data-d="unseenconciergerie.com">contact&#64;unseenconciergerie.com</a></div>
 </nav>
+
+
 
 <header class="page">
   <div class="wrap">
@@ -236,7 +321,7 @@ footer .num{color:#D2D2D2}
       <h3 data-en="Who receives it" data-fr="Qui les reçoit">Who receives it</h3>
       <p data-en="Only the providers strictly necessary to deliver the service you have requested, and only the details they need. Data is never sold, rented or used for third-party advertising." data-fr="Uniquement les prestataires strictement nécessaires à l'exécution de la prestation demandée, et uniquement les éléments qui leur sont nécessaires. Les données ne sont jamais vendues, louées ni utilisées à des fins publicitaires par des tiers.">Only the providers strictly necessary to deliver the service you have requested, and only the details they need. Data is never sold, rented or used for third-party advertising.</p>
       <h3 data-en="Transfers outside the European Union" data-fr="Transferts hors de l&#x27;Union européenne">Transfers outside the European Union</h3>
-      <p data-en="Some of our technical providers are based outside the European Union: the hosting of this site (GitHub, United States), audience measurement (Cloudflare, United States), the delivery of the home page form (Web3Forms), email (Google) and messaging services such as WhatsApp (Meta). These transfers are covered by the safeguards provided for by the GDPR, in particular the European Commission&#x27;s adequacy decision on the EU-US Data Privacy Framework and standard contractual clauses." data-fr="Certains de nos prestataires techniques sont établis hors de l&#x27;Union européenne : l&#x27;hébergement de ce site (GitHub, États-Unis), la mesure d&#x27;audience (Cloudflare, États-Unis), l&#x27;envoi du formulaire de la page d&#x27;accueil (Web3Forms), la messagerie électronique (Google) et des messageries comme WhatsApp (Meta). Ces transferts sont encadrés par les garanties prévues par le RGPD, notamment la décision d&#x27;adéquation de la Commission européenne relative au cadre de protection des données UE-États-Unis et les clauses contractuelles types.">Some of our technical providers are based outside the European Union: the hosting of this site (GitHub, United States), audience measurement (Cloudflare, United States), the delivery of the home page form (Web3Forms), email (Google) and messaging services such as WhatsApp (Meta). These transfers are covered by the safeguards provided for by the GDPR, in particular the European Commission's adequacy decision on the EU-US Data Privacy Framework and standard contractual clauses.</p>
+      <p data-en="Some of our technical providers are based outside the European Union: the hosting of this site (GitHub, United States), audience measurement (Cloudflare, United States), the delivery of the site's forms (Web3Forms), email (Google) and messaging services such as WhatsApp (Meta). These transfers are covered by the safeguards provided for by the GDPR, in particular the European Commission&#x27;s adequacy decision on the EU-US Data Privacy Framework and standard contractual clauses." data-fr="Certains de nos prestataires techniques sont établis hors de l&#x27;Union européenne : l&#x27;hébergement de ce site (GitHub, États-Unis), la mesure d&#x27;audience (Cloudflare, États-Unis), l&#x27;envoi des formulaires du site (Web3Forms), la messagerie électronique (Google) et des messageries comme WhatsApp (Meta). Ces transferts sont encadrés par les garanties prévues par le RGPD, notamment la décision d&#x27;adéquation de la Commission européenne relative au cadre de protection des données UE-États-Unis et les clauses contractuelles types.">Some of our technical providers are based outside the European Union: the hosting of this site (GitHub, United States), audience measurement (Cloudflare, United States), the delivery of the site's forms (Web3Forms), email (Google) and messaging services such as WhatsApp (Meta). These transfers are covered by the safeguards provided for by the GDPR, in particular the European Commission's adequacy decision on the EU-US Data Privacy Framework and standard contractual clauses.</p>
 
       <h3 data-en="How long we keep it" data-fr="Combien de temps nous les conservons">How long we keep it</h3>
       <p data-en="For the time needed to deliver the service, then for the periods required by applicable accounting and tax obligations, being ten years for invoices and accounting records. Prospect data is kept for three years from the last contact." data-fr="Pendant la durée nécessaire à l'exécution de la prestation, puis pendant les durées imposées par les obligations comptables et fiscales applicables, soit dix ans pour les factures et pièces comptables. Les données de prospects sont conservées trois ans à compter du dernier contact.">For the time needed to deliver the service, then for the periods required by applicable accounting and tax obligations, being ten years for invoices and accounting records. Prospect data is kept for three years from the last contact.</p>
@@ -248,7 +333,7 @@ footer .num{color:#D2D2D2}
       <p data-en="This site sets no cookies, whether for advertising or analytics. Its fonts are served from the site itself, with no call to a third-party service. Visits are counted with Cloudflare Web Analytics, a tool that sets no cookie, does not follow visitors from one site to another and builds no individual profile. Your language choice is stored locally in your browser and is never transmitted to us. As with any website, the host records technical connection data, such as the IP address, to deliver the pages and protect the service." data-fr="Ce site ne dépose aucun cookie, qu&#x27;il soit publicitaire ou de mesure d&#x27;audience. Ses polices de caractères sont hébergées sur le site lui-même, sans appel à un service tiers. Les visites sont comptées avec Cloudflare Web Analytics, un outil qui ne dépose aucun cookie, ne suit pas les visiteurs d&#x27;un site à l&#x27;autre et ne constitue aucun profil individuel. Votre choix de langue est enregistré localement dans votre navigateur et ne nous est jamais transmis. Comme pour tout site, l&#x27;hébergeur enregistre des données techniques de connexion, comme l&#x27;adresse IP, pour afficher les pages et protéger le service.">This site sets no cookies, whether for advertising or analytics. Its fonts are served from the site itself, with no call to a third-party service. Visits are counted with Cloudflare Web Analytics, a tool that sets no cookie, does not follow visitors from one site to another and builds no individual profile. Your language choice is stored locally in your browser and is never transmitted to us. As with any website, the host records technical connection data, such as the IP address, to deliver the pages and protect the service.</p>
 
       <h3 data-en="The enquiry form" data-fr="Le formulaire de demande">The enquiry form</h3>
-      <p data-en="The forms on the home page and on the Professionals page send your message to our mailbox through a technical form-delivery service (Web3Forms), which relays it and may keep a copy under its own privacy policy. If you prefer, write to us directly by email or WhatsApp." data-fr="Les formulaires de la page d'accueil et de la page Professionnels transmettent votre message à notre boîte e-mail par l'intermédiaire d'un service technique d'envoi de formulaires (Web3Forms), qui l'achemine et peut en conserver une copie selon sa propre politique de confidentialité. Si vous préférez, écrivez-nous directement par e-mail ou par WhatsApp.">The forms on the home page and on the Professionals page send your message to our mailbox through a technical form-delivery service (Web3Forms), which relays it and may keep a copy under its own privacy policy. If you prefer, write to us directly by email or WhatsApp.</p>
+      <p data-en="The forms on the home page and on the Professionals and Companies pages send your message to our mailbox through a technical form-delivery service (Web3Forms), which relays it and may keep a copy under its own privacy policy. If you prefer, write to us directly by email or WhatsApp." data-fr="Les formulaires de la page d'accueil et des pages Professionnels et Entreprises transmettent votre message à notre boîte e-mail par l'intermédiaire d'un service technique d'envoi de formulaires (Web3Forms), qui l'achemine et peut en conserver une copie selon sa propre politique de confidentialité. Si vous préférez, écrivez-nous directement par e-mail ou par WhatsApp.">The forms on the home page and on the Professionals and Companies pages send your message to our mailbox through a technical form-delivery service (Web3Forms), which relays it and may keep a copy under its own privacy policy. If you prefer, write to us directly by email or WhatsApp.</p>
     </section>
 
     <section class="blk">
@@ -272,13 +357,19 @@ footer .num{color:#D2D2D2}
   </div>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div class="foot-mark">UNSEEN.</div>
-    <div>SIREN <span class="num">999 356 587</span> · SIRET <span class="num">999 356 587 00017</span> · APE <span class="num">96.09Z</span></div>
-    <div style="margin-top:12px"><a href="index.html" data-en="Back to unseenconciergerie.com" data-fr="Retour à unseenconciergerie.com">Back to unseenconciergerie.com</a></div>
+<footer><div class="wrap">
+  <div class="pied">
+    <div><div class="mark">UNSEEN.</div><div class="curated">Curated by UNSEEN.</div><div class="reseaux"><a href="https://wa.me/33613850733" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.1 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a><a href="https://instagram.com/unseen.conciergerie" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg></a><a href="https://www.linkedin.com/company/unseen-conciergerie" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-.95 1.83-1.95 3.76-1.95 4.02 0 4.76 2.5 4.76 5.75V21h-4v-5.2c0-1.24-.02-2.83-1.83-2.83-1.83 0-2.11 1.35-2.11 2.74V21h-4z"/></svg></a></div></div>
+    <div><h4 data-en="Destinations" data-fr="Destinations" data-zh="目的地">Destinations</h4><a href="paris.html" data-en="Paris" data-fr="Paris" data-zh="巴黎">Paris</a><a href="saison-ski-2026-2027.html" data-en="The Alps" data-fr="Les Alpes" data-zh="阿尔卑斯">The Alps</a><a href="riviera.html" data-en="The Riviera" data-fr="La Riviera" data-zh="蔚蓝海岸">The Riviera</a><a href="ocean-indien.html" data-en="Indian Ocean" data-fr="Océan Indien" data-zh="印度洋">Indian Ocean</a></div>
+    <div><h4 data-en="Seasons" data-fr="Saisons" data-zh="当季">Seasons</h4><a href="saison-ski-2026-2027.html" data-en="The ski season" data-fr="La saison de ski" data-zh="滑雪季">The ski season</a><a href="formule-1.html" data-en="The Grand Prix" data-fr="Le Grand Prix" data-zh="摩纳哥大奖赛">The Grand Prix</a></div>
+    <div><h4 data-en="Professionals" data-fr="Professionnels" data-zh="专业合作">Professionals</h4><a href="professionals.html" data-en="Professionals" data-fr="Professionnels" data-zh="专业合作">Professionals</a><a href="companies.html" data-en="Companies" data-fr="Entreprises" data-zh="企业">Companies</a></div>
+    <div class="joindre"><h4 data-en="Contact" data-fr="Contact" data-zh="联系我们">Contact</h4><p><span>WhatsApp</span><a href="https://wa.me/33613850733">+33 (0)6 13 85 07 33</a></p><p><span data-en="Email" data-fr="E-mail" data-zh="邮箱">Email</span><a href="#" data-u="contact" data-d="unseenconciergerie.com">contact&#64;unseenconciergerie.com</a></p><p><span>Instagram</span><a href="https://instagram.com/unseen.conciergerie">@unseen.conciergerie</a></p><p><span>LinkedIn</span><a href="https://www.linkedin.com/company/unseen-conciergerie">UNSEEN.</a></p></div>
   </div>
-</footer>
+  <div class="legal">
+    <div><strong>UNSEEN.</strong> <span data-en="Conciergerie de luxe. Sole trader registered in France." data-fr="Conciergerie de luxe. Entreprise individuelle immatriculée en France." data-zh="私人奢华礼宾服务。法国注册个体企业。">Conciergerie de luxe. Sole trader registered in France.</span><br>SIREN 999 356 587 &nbsp; SIRET 999 356 587 00017 &nbsp; APE 96.09Z</div>
+    <div><a href="legal.html" data-en="Legal notice, terms and privacy" data-fr="Mentions légales, conditions et confidentialité" data-zh="法律声明、条款与隐私政策">Legal notice, terms and privacy</a><br>&copy; 2026 UNSEEN. <span data-en="All rights reserved." data-fr="Tous droits réservés." data-zh="版权所有。">All rights reserved.</span></div>
+  </div>
+</div></footer>
 
 <script>
 (function(){
@@ -311,12 +402,16 @@ footer .num{color:#D2D2D2}
 <script>
 /* Menu trois traits : même comportement que les autres pages */
 (function(){
-  var b=document.getElementById('burger'),pn=document.getElementById('panel');if(!b||!pn)return;
-  b.onclick=function(){var o=document.body.classList.toggle('menu-open');b.setAttribute('aria-expanded',o);pn.setAttribute('aria-hidden',!o);};
-  pn.querySelectorAll('a').forEach(function(a){a.onclick=function(){document.body.classList.remove('menu-open');};});
+  var b=document.getElementById('burger'),pn=document.getElementById('volet');if(!b||!pn)return;
+  b.onclick=function(){var o=document.body.classList.toggle('menu-ouvert');b.setAttribute('aria-expanded',o);pn.setAttribute('aria-hidden',!o);};
+  pn.querySelectorAll('a').forEach(function(a){a.onclick=function(){document.body.classList.remove('menu-ouvert');};});
   b.addEventListener('touchend',function(e){e.preventDefault();b.click();},{passive:false});
 })();
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e276d22355ad4ef6a0ed2be285d84a83"}'></script><!-- End Cloudflare Web Analytics -->
-</body>
+<script>
+// Barre du haut : transparente sur la photo, blanche dès qu'on descend
+(function(){var bar=document.getElementById('bar');function maj(){bar.classList.toggle('solide',window.pageYOffset>40);}
+maj();window.addEventListener('scroll',maj,{passive:true});})();
+</script></body>
 </html>
